@@ -4,18 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#3182F6" />
-  <title>JobTrack · 흩어진 취준, 한 곳에서</title>
+  <title>커리업 (Career up) · 커리어를 한 칸 올리는 취준 대시보드</title>
   <meta name="description" content="지원 현황, 면접 일정, 이력서·자소서까지 한 화면에서 관리하는 취준생 대시보드. 노션·엑셀·메모장 사이를 더 이상 옮겨다니지 마세요." />
 
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="ko_KR" />
-  <meta property="og:title" content="JobTrack · 흩어진 취준, 한 곳에서" />
-  <meta property="og:description" content="지원 현황, 면접 일정, 이력서까지 — 취준생 대시보드 JobTrack." />
+  <meta property="og:title" content="커리업 (Career up) · 커리어를 한 칸 올리는 취준 대시보드" />
+  <meta property="og:description" content="지원 현황, 면접 일정, 이력서까지 — 취준생 대시보드 커리업." />
   <meta property="og:url" content="https://jobtrack-landing.vercel.app/" />
-  <meta property="og:site_name" content="JobTrack" />
+  <meta property="og:site_name" content="Career up" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="JobTrack · 흩어진 취준, 한 곳에서" />
-  <meta name="twitter:description" content="지원 현황, 면접 일정, 이력서까지 — 취준생 대시보드 JobTrack." />
+  <meta name="twitter:title" content="커리업 · 커리어를 한 칸 올리는 취준 대시보드" />
+  <meta name="twitter:description" content="지원 현황, 면접 일정, 이력서까지 — 취준생 대시보드 커리업." />
 
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
@@ -52,8 +52,8 @@
   <header class="sticky top-0 z-30 border-b border-zinc-100 bg-white/85 backdrop-blur-md">
     <div class="mx-auto max-w-6xl px-5 sm:px-8 h-14 flex items-center justify-between">
       <a href="#" class="flex items-center gap-1.5">
-        <span class="w-7 h-7 rounded-lg bg-brand text-white flex items-center justify-center font-bold text-xs">J</span>
-        <span class="text-base font-bold tracking-tight">JobTrack</span>
+        <span class="w-7 h-7 rounded-lg bg-brand text-white flex items-center justify-center font-bold text-xs">C</span>
+        <span class="text-base font-bold tracking-tight">Career up</span>
       </a>
       <nav class="hidden md:flex items-center gap-6 text-sm text-zinc-600">
         <a href="#features" class="hover:text-zinc-900 transition-colors">기능</a>
@@ -79,7 +79,7 @@
       </h1>
       <p class="mt-6 text-base sm:text-xl text-zinc-500 leading-relaxed">
         노션·엑셀·메모장 사이를 옮겨다니지 마세요.<br class="hidden sm:block"/>
-        지원 현황, 면접 일정, 이력서까지 — JobTrack 하나로 끝.
+        지원 현황, 면접 일정, 이력서까지 — 커리업 하나로 끝.
       </p>
 
       <div class="mt-9 flex flex-col sm:flex-row gap-3 justify-center">
@@ -95,8 +95,22 @@
       </div>
 
       <p class="mt-5 text-xs text-zinc-400">
-        무료 · 신용카드 불필요 · 모바일 최적화
+        무료 · 가입 30초 · 모바일 최적화
       </p>
+    </div>
+
+    <!-- 왜 커리업? -->
+    <div class="mx-auto max-w-3xl px-5 sm:px-8 pb-10 sm:pb-12 reveal">
+      <div class="rounded-3xl border border-zinc-100 bg-white p-7 sm:p-10">
+        <p class="text-xs font-semibold text-brand mb-3 tracking-widest">WHY "커리업"?</p>
+        <p class="text-[20px] sm:text-[24px] font-bold tracking-tight leading-snug mb-4">
+          경력(Career)을 한 칸 올린다(Up).
+        </p>
+        <p class="text-sm sm:text-base text-zinc-600 leading-relaxed">
+          작은 한 걸음이 모여 큰 도약이 됩니다.<br/>
+          매일의 지원 한 건, 면접 하나가 결국 커리어의 다음 페이지를 여는 시작이라는 믿음으로 만들었어요. 흩어진 기록 사이를 헤매느라 정작 중요한 한 걸음을 놓치지 마세요. <strong class="text-zinc-900">커리업</strong>이 그 한 걸음을 같이 챙길게요.
+        </p>
+      </div>
     </div>
 
     <!-- 미리보기 박스 (CSS 모형) -->
@@ -113,7 +127,7 @@
         <div class="grid md:grid-cols-[180px_1fr]">
           <!-- mock sidebar -->
           <div class="hidden md:block border-r border-zinc-100 p-3 space-y-1 bg-zinc-50/40">
-            <div class="text-xs font-bold mb-3 px-2">JobTrack</div>
+            <div class="text-xs font-bold mb-3 px-2">Career up</div>
             <div class="rounded-lg px-2.5 py-1.5 text-xs text-zinc-500">대시보드</div>
             <div class="rounded-lg px-2.5 py-1.5 text-xs text-zinc-500">캘린더</div>
             <div class="rounded-lg bg-zinc-100 px-2.5 py-1.5 text-xs font-semibold">지원현황</div>
@@ -180,10 +194,9 @@
   <!-- WHY -->
   <section id="why" class="mx-auto max-w-5xl px-5 sm:px-8 py-16 sm:py-24">
     <div class="text-center mb-12">
-      <p class="text-xs font-semibold text-brand mb-2 tracking-widest">WHY JOBTRACK</p>
+      <p class="text-xs font-semibold text-brand mb-2 tracking-widest">취준생이 가장 답답해하는 3가지</p>
       <h2 class="text-[26px] sm:text-[32px] font-bold tracking-tight leading-tight">
-        취준할 때 답답했던 3가지,<br/>
-        JobTrack은 이렇게 풀어요.
+        커리업은<br/>이렇게 풀어요.
       </h2>
     </div>
 
@@ -290,7 +303,7 @@
             <div class="w-8 h-8 rounded-lg bg-brand/10 text-brand flex items-center justify-center">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 8.5 22 9.5 17 14.5 18 21.5 12 18 6 21.5 7 14.5 2 9.5 9 8.5"/></svg>
             </div>
-            <h3 class="text-[17px] font-bold">AI 피드백 <span class="text-[10px] font-medium text-zinc-400 ml-1">곧 출시</span></h3>
+            <h3 class="text-[17px] font-bold">AI 피드백 <span class="text-[10px] font-medium text-zinc-400 ml-1">출시 예정</span></h3>
           </div>
           <p class="text-sm text-zinc-600 leading-relaxed">
             이력서를 업로드하면 Claude가 직무별 강점과 보완점을 분석. 적합 직무 추천, 섹션별 리뷰, 커리어 경로 제안까지.
@@ -319,7 +332,7 @@
         <span class="flex-shrink-0 w-8 h-8 rounded-full bg-brand text-white flex items-center justify-center font-bold text-sm">1</span>
         <div>
           <p class="text-[16px] font-bold mb-1">이메일로 가입 (30초)</p>
-          <p class="text-sm text-zinc-500">비밀번호 외엔 묻지 않아요. 신용카드도 없습니다.</p>
+          <p class="text-sm text-zinc-500">비밀번호 외엔 묻지 않아요.</p>
         </div>
       </li>
       <li class="rounded-2xl border border-zinc-100 bg-white p-6 flex items-start gap-4">
@@ -354,7 +367,7 @@
             <span class="text-zinc-400 group-open:rotate-180 transition-transform">▾</span>
           </summary>
           <p class="mt-3 text-sm text-zinc-600 leading-relaxed">
-            네, 베타 기간 동안 무료입니다. 결제 정보를 받지 않고, 광고도 없습니다.
+            2026년 5월 기준, 커리업은 베타 서비스로 출시되어 모든 기능을 무료로 제공하고 있습니다. 결제 정보도, 광고도 없어요.
           </p>
         </details>
         <details class="group rounded-2xl border border-zinc-100 bg-white p-5 [&_summary::-webkit-details-marker]:hidden">
@@ -418,8 +431,8 @@
   <footer class="border-t border-zinc-100">
     <div class="mx-auto max-w-6xl px-5 sm:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-zinc-400">
       <div class="flex items-center gap-2">
-        <span class="w-5 h-5 rounded-md bg-brand text-white flex items-center justify-center font-bold text-[10px]">J</span>
-        <span class="font-semibold text-zinc-600">JobTrack</span>
+        <span class="w-5 h-5 rounded-md bg-brand text-white flex items-center justify-center font-bold text-[10px]">C</span>
+        <span class="font-semibold text-zinc-600">Career up</span>
         <span>· © 2026</span>
       </div>
       <div class="flex items-center gap-4">
