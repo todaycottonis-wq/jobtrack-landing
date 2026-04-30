@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#3182F6" />
+  <title>JobTrack · 흩어진 취준, 한 곳에서</title>
+  <meta name="description" content="지원 현황, 면접 일정, 이력서·자소서까지 한 화면에서 관리하는 취준생 대시보드. 노션·엑셀·메모장 사이를 더 이상 옮겨다니지 마세요." />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ko_KR" />
+  <meta property="og:title" content="JobTrack · 흩어진 취준, 한 곳에서" />
+  <meta property="og:description" content="지원 현황, 면접 일정, 이력서까지 — 취준생 대시보드 JobTrack." />
+  <meta property="og:url" content="https://jobtrack-landing.vercel.app/" />
+  <meta property="og:site_name" content="JobTrack" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="JobTrack · 흩어진 취준, 한 곳에서" />
+  <meta name="twitter:description" content="지원 현황, 면접 일정, 이력서까지 — 취준생 대시보드 JobTrack." />
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { brand: '#3182F6' },
+          fontFamily: { sans: ['Pretendard', 'system-ui', 'sans-serif'] },
+        },
+      },
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Pretendard', system-ui, sans-serif; }
+    .grid-bg {
+      background-image:
+        radial-gradient(circle at 20% 0%, rgba(49,130,246,0.08), transparent 50%),
+        radial-gradient(circle at 80% 0%, rgba(49,130,246,0.05), transparent 50%);
+    }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { animation: fadeUp .6s ease-out both; }
+  </style>
+</head>
+<body class="bg-white text-zinc-900">
+
+  <!-- 상단 -->
+  <header class="sticky top-0 z-30 border-b border-zinc-100 bg-white/85 backdrop-blur-md">
+    <div class="mx-auto max-w-6xl px-5 sm:px-8 h-14 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-1.5">
+        <span class="w-7 h-7 rounded-lg bg-brand text-white flex items-center justify-center font-bold text-xs">J</span>
+        <span class="text-base font-bold tracking-tight">JobTrack</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm text-zinc-600">
+        <a href="#features" class="hover:text-zinc-900 transition-colors">기능</a>
+        <a href="#why" class="hover:text-zinc-900 transition-colors">왜 써야 할까</a>
+        <a href="#how" class="hover:text-zinc-900 transition-colors">사용 흐름</a>
+        <a href="#faq" class="hover:text-zinc-900 transition-colors">자주 묻는 질문</a>
+      </nav>
+      <a href="https://job-kappa-coral.vercel.app/login" class="rounded-lg bg-zinc-900 hover:bg-zinc-700 transition-colors px-3.5 py-1.5 text-xs sm:text-sm font-semibold text-white">
+        활용해보기
+      </a>
+    </div>
+  </header>
+
+  <!-- 히어로 -->
+  <section class="grid-bg">
+    <div class="mx-auto max-w-3xl px-5 sm:px-8 pt-16 sm:pt-24 pb-16 sm:pb-20 text-center reveal">
+      <span class="inline-block rounded-full border border-brand/20 bg-brand/5 text-brand text-xs font-semibold px-3 py-1 mb-5">
+        🎯 베타 출시 · 가입 30초
+      </span>
+      <h1 class="text-[34px] sm:text-[52px] font-bold tracking-tight leading-[1.12]">
+        흩어진 취준,<br/>
+        <span class="bg-gradient-to-r from-brand to-blue-500 bg-clip-text text-transparent">한 곳에서.</span>
+      </h1>
+      <p class="mt-6 text-base sm:text-xl text-zinc-500 leading-relaxed">
+        노션·엑셀·메모장 사이를 옮겨다니지 마세요.<br class="hidden sm:block"/>
+        지원 현황, 면접 일정, 이력서까지 — JobTrack 하나로 끝.
+      </p>
+
+      <div class="mt-9 flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="https://job-kappa-coral.vercel.app/login"
+           class="inline-flex items-center justify-center gap-2 rounded-xl bg-brand hover:bg-blue-600 active:bg-blue-700 transition-colors px-7 py-3.5 text-sm font-semibold text-white shadow-[0_8px_24px_rgba(49,130,246,0.3)]">
+          활용해보기
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="#why"
+           class="inline-flex items-center justify-center rounded-xl border border-zinc-200 bg-white hover:bg-zinc-50 transition-colors px-7 py-3.5 text-sm font-semibold text-zinc-700">
+          왜 써야 할까?
+        </a>
+      </div>
+
+      <p class="mt-5 text-xs text-zinc-400">
+        무료 · 신용카드 불필요 · 모바일 최적화
+      </p>
+    </div>
+
+    <!-- 미리보기 박스 (CSS 모형) -->
+    <div class="mx-auto max-w-5xl px-5 sm:px-8 pb-16 sm:pb-24 reveal">
+      <div class="rounded-2xl border border-zinc-200 bg-white shadow-[0_24px_64px_rgba(0,0,0,0.08)] overflow-hidden">
+        <!-- mock window chrome -->
+        <div class="flex items-center gap-1.5 px-4 py-2.5 border-b border-zinc-100 bg-zinc-50">
+          <span class="w-2.5 h-2.5 rounded-full bg-red-300"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-yellow-300"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-green-300"></span>
+          <span class="ml-3 text-[11px] text-zinc-400">job-kappa-coral.vercel.app/applications</span>
+        </div>
+
+        <div class="grid md:grid-cols-[180px_1fr]">
+          <!-- mock sidebar -->
+          <div class="hidden md:block border-r border-zinc-100 p-3 space-y-1 bg-zinc-50/40">
+            <div class="text-xs font-bold mb-3 px-2">JobTrack</div>
+            <div class="rounded-lg px-2.5 py-1.5 text-xs text-zinc-500">대시보드</div>
+            <div class="rounded-lg px-2.5 py-1.5 text-xs text-zinc-500">캘린더</div>
+            <div class="rounded-lg bg-zinc-100 px-2.5 py-1.5 text-xs font-semibold">지원현황</div>
+            <div class="rounded-lg px-2.5 py-1.5 text-xs text-zinc-500">문서함</div>
+            <div class="rounded-lg px-2.5 py-1.5 text-xs text-zinc-500">AI 피드백</div>
+          </div>
+
+          <!-- mock content -->
+          <div class="p-5 sm:p-6">
+            <div class="flex items-center justify-between mb-3">
+              <p class="text-base font-bold">지원현황</p>
+              <span class="rounded-md bg-brand text-white text-[11px] font-medium px-2 py-1">+ 지원 추가</span>
+            </div>
+            <div class="flex gap-1.5 mb-4">
+              <span class="rounded-full bg-zinc-900 text-white text-[11px] px-2.5 py-0.5">전체</span>
+              <span class="rounded-full bg-zinc-100 text-zinc-600 text-[11px] px-2.5 py-0.5">서류심사</span>
+              <span class="rounded-full bg-zinc-100 text-zinc-600 text-[11px] px-2.5 py-0.5">면접</span>
+              <span class="rounded-full bg-zinc-100 text-zinc-600 text-[11px] px-2.5 py-0.5">최종합격</span>
+            </div>
+            <div class="rounded-lg border border-zinc-100">
+              <div class="grid grid-cols-[2fr_1fr_1fr] gap-3 px-3 py-2 border-b border-zinc-100 text-[10px] font-medium text-zinc-400">
+                <span>회사 / 직무</span><span>상태</span><span>지원일</span>
+              </div>
+              <div class="grid grid-cols-[2fr_1fr_1fr] gap-3 px-3 py-2.5 border-b border-zinc-50 text-xs">
+                <div><div class="font-medium">카카오</div><div class="text-[10px] text-zinc-400">프로덕트 디자이너</div></div>
+                <div class="flex items-center"><span class="rounded-full bg-purple-100 text-purple-700 text-[10px] px-2 py-0.5">면접</span></div>
+                <div class="flex items-center text-[11px] text-zinc-500">2026.04.20</div>
+              </div>
+              <div class="grid grid-cols-[2fr_1fr_1fr] gap-3 px-3 py-2.5 border-b border-zinc-50 text-xs">
+                <div><div class="font-medium">토스</div><div class="text-[10px] text-zinc-400">UX Researcher</div></div>
+                <div class="flex items-center"><span class="rounded-full bg-blue-100 text-blue-700 text-[10px] px-2 py-0.5">지원완료</span></div>
+                <div class="flex items-center text-[11px] text-zinc-500">2026.04.18</div>
+              </div>
+              <div class="grid grid-cols-[2fr_1fr_1fr] gap-3 px-3 py-2.5 text-xs">
+                <div><div class="font-medium">당근</div><div class="text-[10px] text-zinc-400">콘텐츠 전략</div></div>
+                <div class="flex items-center"><span class="rounded-full bg-green-100 text-green-700 text-[10px] px-2 py-0.5">최종합격</span></div>
+                <div class="flex items-center text-[11px] text-zinc-500">2026.04.10</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 통계/소구 -->
+  <section class="mx-auto max-w-5xl px-5 sm:px-8 py-12 sm:py-16">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="rounded-2xl border border-zinc-100 p-6 text-center bg-white">
+        <p class="text-3xl font-bold tracking-tight text-brand">0초</p>
+        <p class="mt-2 text-sm text-zinc-500">노션·엑셀 사이 이동 시간</p>
+      </div>
+      <div class="rounded-2xl border border-zinc-100 p-6 text-center bg-white">
+        <p class="text-3xl font-bold tracking-tight text-brand">7단계</p>
+        <p class="mt-2 text-sm text-zinc-500">위시리스트→합격까지 자동 추적</p>
+      </div>
+      <div class="rounded-2xl border border-zinc-100 p-6 text-center bg-white">
+        <p class="text-3xl font-bold tracking-tight text-brand">5초</p>
+        <p class="mt-2 text-sm text-zinc-500">다음 주 일정 한눈에 파악</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section id="why" class="mx-auto max-w-5xl px-5 sm:px-8 py-16 sm:py-24">
+    <div class="text-center mb-12">
+      <p class="text-xs font-semibold text-brand mb-2 tracking-widest">WHY JOBTRACK</p>
+      <h2 class="text-[26px] sm:text-[32px] font-bold tracking-tight leading-tight">
+        취준할 때 답답했던 3가지,<br/>
+        JobTrack은 이렇게 풀어요.
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <article class="rounded-2xl border border-zinc-100 bg-white p-7">
+        <div class="w-11 h-11 rounded-xl bg-brand/10 flex items-center justify-center mb-5 text-brand">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <p class="text-xs font-medium text-zinc-400 mb-1.5">😩 이런 적 있죠</p>
+        <p class="text-[16px] font-bold mb-3 leading-snug">"어디까지 진행됐는지 헷갈려요"</p>
+        <p class="text-sm text-zinc-600 leading-relaxed">
+          회사·직무·진행 단계를 한눈에. <strong class="text-zinc-900">7단계 진행 상태</strong>로 위시리스트부터 합격까지 자동 정리.
+        </p>
+      </article>
+
+      <article class="rounded-2xl border border-zinc-100 bg-white p-7">
+        <div class="w-11 h-11 rounded-xl bg-brand/10 flex items-center justify-center mb-5 text-brand">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="9 16 11 18 15 14"/></svg>
+        </div>
+        <p class="text-xs font-medium text-zinc-400 mb-1.5">😩 이런 적 있죠</p>
+        <p class="text-[16px] font-bold mb-3 leading-snug">"중요한 일정을 자꾸 놓쳐요"</p>
+        <p class="text-sm text-zinc-600 leading-relaxed">
+          면접·마감일을 <strong class="text-zinc-900">캘린더 한 화면</strong>에서 색상으로 구분. 다음 주 일정을 5초 안에 파악.
+        </p>
+      </article>
+
+      <article class="rounded-2xl border border-zinc-100 bg-white p-7">
+        <div class="w-11 h-11 rounded-xl bg-brand/10 flex items-center justify-center mb-5 text-brand">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 8.5 22 9.5 17 14.5 18 21.5 12 18 6 21.5 7 14.5 2 9.5 9 8.5"/></svg>
+        </div>
+        <p class="text-xs font-medium text-zinc-400 mb-1.5">😩 이런 적 있죠</p>
+        <p class="text-[16px] font-bold mb-3 leading-snug">"이력서를 어떻게 고쳐야 할지 막막해요"</p>
+        <p class="text-sm text-zinc-600 leading-relaxed">
+          이력서·자소서·포트폴리오를 <strong class="text-zinc-900">폴더로 정리</strong>하고, 곧 AI가 직무별 개선점도 짚어줄 거예요.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- 기능 디테일 -->
+  <section id="features" class="bg-zinc-50 border-y border-zinc-100">
+    <div class="mx-auto max-w-5xl px-5 sm:px-8 py-16 sm:py-24">
+      <div class="text-center mb-12">
+        <p class="text-xs font-semibold text-brand mb-2 tracking-widest">FEATURES</p>
+        <h2 class="text-[26px] sm:text-[32px] font-bold tracking-tight leading-tight">
+          꼭 필요한 기능만,<br/>꼭 필요한 만큼만.
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <article class="rounded-2xl border border-zinc-100 bg-white p-7">
+          <div class="flex items-center gap-2 mb-3">
+            <div class="w-8 h-8 rounded-lg bg-brand/10 text-brand flex items-center justify-center">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/></svg>
+            </div>
+            <h3 class="text-[17px] font-bold">지원 현황 추적</h3>
+          </div>
+          <p class="text-sm text-zinc-600 leading-relaxed">
+            회사명, 직무, 지원일, 마감일, 메모까지. 7가지 진행 상태로 자동 분류되고, 필터로 원하는 항목만 골라봅니다.
+          </p>
+          <ul class="mt-4 space-y-1.5 text-xs text-zinc-500">
+            <li>✓ 위시리스트 / 지원완료 / 서류심사 / 면접 / 최종합격 / 불합격 / 취소</li>
+            <li>✓ 회사·직무 무제한 추가</li>
+            <li>✓ 모바일에서도 한 손 조작</li>
+          </ul>
+        </article>
+
+        <article class="rounded-2xl border border-zinc-100 bg-white p-7">
+          <div class="flex items-center gap-2 mb-3">
+            <div class="w-8 h-8 rounded-lg bg-brand/10 text-brand flex items-center justify-center">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <h3 class="text-[17px] font-bold">스마트 캘린더</h3>
+          </div>
+          <p class="text-sm text-zinc-600 leading-relaxed">
+            면접·마감일·팔로우업을 색깔로 구분. 날짜 클릭 한 번이면 일정 추가. 다음 일정이 무엇인지 한눈에 보입니다.
+          </p>
+          <ul class="mt-4 space-y-1.5 text-xs text-zinc-500">
+            <li>✓ 면접 / 마감 / 팔로우업 / 기타 4가지 유형</li>
+            <li>✓ 미팅 URL · 장소 · 메모 보관</li>
+            <li>✓ 월간 한눈 뷰</li>
+          </ul>
+        </article>
+
+        <article class="rounded-2xl border border-zinc-100 bg-white p-7">
+          <div class="flex items-center gap-2 mb-3">
+            <div class="w-8 h-8 rounded-lg bg-brand/10 text-brand flex items-center justify-center">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <h3 class="text-[17px] font-bold">문서함 + 폴더</h3>
+          </div>
+          <p class="text-sm text-zinc-600 leading-relaxed">
+            이력서, 자기소개서, 포트폴리오를 폴더별로 정리. 회사별로 다른 버전을 관리하기에 딱 좋아요.
+          </p>
+          <ul class="mt-4 space-y-1.5 text-xs text-zinc-500">
+            <li>✓ PDF / PNG / JPG 업로드 (10MB)</li>
+            <li>✓ 이모지 폴더로 직관적 분류</li>
+            <li>✓ 본인만 접근 — 안전한 비공개 저장</li>
+          </ul>
+        </article>
+
+        <article class="rounded-2xl border border-zinc-100 bg-white p-7">
+          <div class="flex items-center gap-2 mb-3">
+            <div class="w-8 h-8 rounded-lg bg-brand/10 text-brand flex items-center justify-center">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 8.5 22 9.5 17 14.5 18 21.5 12 18 6 21.5 7 14.5 2 9.5 9 8.5"/></svg>
+            </div>
+            <h3 class="text-[17px] font-bold">AI 피드백 <span class="text-[10px] font-medium text-zinc-400 ml-1">곧 출시</span></h3>
+          </div>
+          <p class="text-sm text-zinc-600 leading-relaxed">
+            이력서를 업로드하면 Claude가 직무별 강점과 보완점을 분석. 적합 직무 추천, 섹션별 리뷰, 커리어 경로 제안까지.
+          </p>
+          <ul class="mt-4 space-y-1.5 text-xs text-zinc-500">
+            <li>✓ 또래 대비 돋보이는 영역 / 채워가면 좋은 영역</li>
+            <li>✓ Best Match 직무 + 추천 회사</li>
+            <li>✓ 단기/중기/장기 커리어 경로</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW -->
+  <section id="how" class="mx-auto max-w-4xl px-5 sm:px-8 py-16 sm:py-24">
+    <div class="text-center mb-12">
+      <p class="text-xs font-semibold text-brand mb-2 tracking-widest">HOW IT WORKS</p>
+      <h2 class="text-[26px] sm:text-[32px] font-bold tracking-tight leading-tight">
+        가입부터 첫 지원 등록까지 1분.
+      </h2>
+    </div>
+
+    <ol class="space-y-3">
+      <li class="rounded-2xl border border-zinc-100 bg-white p-6 flex items-start gap-4">
+        <span class="flex-shrink-0 w-8 h-8 rounded-full bg-brand text-white flex items-center justify-center font-bold text-sm">1</span>
+        <div>
+          <p class="text-[16px] font-bold mb-1">이메일로 가입 (30초)</p>
+          <p class="text-sm text-zinc-500">비밀번호 외엔 묻지 않아요. 신용카드도 없습니다.</p>
+        </div>
+      </li>
+      <li class="rounded-2xl border border-zinc-100 bg-white p-6 flex items-start gap-4">
+        <span class="flex-shrink-0 w-8 h-8 rounded-full bg-brand text-white flex items-center justify-center font-bold text-sm">2</span>
+        <div>
+          <p class="text-[16px] font-bold mb-1">3단계 온보딩 (15초)</p>
+          <p class="text-sm text-zinc-500">기능 한 번만 훑고 바로 시작. 두 번째 방문부턴 안 떠요.</p>
+        </div>
+      </li>
+      <li class="rounded-2xl border border-zinc-100 bg-white p-6 flex items-start gap-4">
+        <span class="flex-shrink-0 w-8 h-8 rounded-full bg-brand text-white flex items-center justify-center font-bold text-sm">3</span>
+        <div>
+          <p class="text-[16px] font-bold mb-1">첫 지원 등록 (15초)</p>
+          <p class="text-sm text-zinc-500">회사·직무·상태만 적으면 끝. 나머진 면접 진행하면서 채워가면 됩니다.</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="bg-zinc-50 border-y border-zinc-100">
+    <div class="mx-auto max-w-3xl px-5 sm:px-8 py-16 sm:py-24">
+      <div class="text-center mb-10">
+        <p class="text-xs font-semibold text-brand mb-2 tracking-widest">FAQ</p>
+        <h2 class="text-[26px] sm:text-[32px] font-bold tracking-tight">자주 묻는 질문</h2>
+      </div>
+
+      <div class="space-y-3">
+        <details class="group rounded-2xl border border-zinc-100 bg-white p-5 [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex items-center justify-between cursor-pointer text-sm font-semibold">
+            진짜 무료인가요?
+            <span class="text-zinc-400 group-open:rotate-180 transition-transform">▾</span>
+          </summary>
+          <p class="mt-3 text-sm text-zinc-600 leading-relaxed">
+            네, 베타 기간 동안 무료입니다. 결제 정보를 받지 않고, 광고도 없습니다.
+          </p>
+        </details>
+        <details class="group rounded-2xl border border-zinc-100 bg-white p-5 [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex items-center justify-between cursor-pointer text-sm font-semibold">
+            제 데이터는 안전한가요?
+            <span class="text-zinc-400 group-open:rotate-180 transition-transform">▾</span>
+          </summary>
+          <p class="mt-3 text-sm text-zinc-600 leading-relaxed">
+            모든 데이터는 본인 계정으로만 접근 가능합니다 (Row Level Security). 다른 유저는 물론 운영자도 권한 없이 들여다볼 수 없도록 분리되어 있어요.
+          </p>
+        </details>
+        <details class="group rounded-2xl border border-zinc-100 bg-white p-5 [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex items-center justify-between cursor-pointer text-sm font-semibold">
+            모바일에서도 잘 되나요?
+            <span class="text-zinc-400 group-open:rotate-180 transition-transform">▾</span>
+          </summary>
+          <p class="mt-3 text-sm text-zinc-600 leading-relaxed">
+            네, 모바일·태블릿·데스크탑 모두 최적화되어 있습니다. 면접장 가는 길에 마지막 메모 확인하기에 좋아요.
+          </p>
+        </details>
+        <details class="group rounded-2xl border border-zinc-100 bg-white p-5 [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex items-center justify-between cursor-pointer text-sm font-semibold">
+            기존 노션/엑셀 데이터를 옮길 수 있나요?
+            <span class="text-zinc-400 group-open:rotate-180 transition-transform">▾</span>
+          </summary>
+          <p class="mt-3 text-sm text-zinc-600 leading-relaxed">
+            현재는 직접 입력만 지원합니다. CSV 일괄 가져오기는 다음 업데이트에서 추가될 예정이에요.
+          </p>
+        </details>
+        <details class="group rounded-2xl border border-zinc-100 bg-white p-5 [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex items-center justify-between cursor-pointer text-sm font-semibold">
+            AI 피드백은 언제 쓸 수 있나요?
+            <span class="text-zinc-400 group-open:rotate-180 transition-transform">▾</span>
+          </summary>
+          <p class="mt-3 text-sm text-zinc-600 leading-relaxed">
+            현재 개발 중이며, 곧 베타 유저에게 우선 공개할 예정입니다. 가입해두시면 출시 시 가장 먼저 안내드려요.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 마지막 CTA -->
+  <section class="grid-bg">
+    <div class="mx-auto max-w-3xl px-5 sm:px-8 py-20 sm:py-28 text-center">
+      <h2 class="text-[28px] sm:text-[36px] font-bold tracking-tight leading-tight">
+        취준, 더 이상 외롭지 않게.
+      </h2>
+      <p class="mt-4 text-base sm:text-lg text-zinc-500">
+        오늘 가입하고 첫 지원부터 기록해보세요.
+      </p>
+      <a href="https://job-kappa-coral.vercel.app/login"
+         class="mt-9 inline-flex items-center justify-center gap-2 rounded-xl bg-brand hover:bg-blue-600 active:bg-blue-700 transition-colors px-8 py-4 text-sm font-semibold text-white shadow-[0_8px_24px_rgba(49,130,246,0.3)]">
+        활용해보기
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- 푸터 -->
+  <footer class="border-t border-zinc-100">
+    <div class="mx-auto max-w-6xl px-5 sm:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-zinc-400">
+      <div class="flex items-center gap-2">
+        <span class="w-5 h-5 rounded-md bg-brand text-white flex items-center justify-center font-bold text-[10px]">J</span>
+        <span class="font-semibold text-zinc-600">JobTrack</span>
+        <span>· © 2026</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="https://job-kappa-coral.vercel.app/login" class="hover:text-zinc-700">앱 시작하기</a>
+        <a href="#features" class="hover:text-zinc-700">기능</a>
+        <a href="#faq" class="hover:text-zinc-700">FAQ</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
