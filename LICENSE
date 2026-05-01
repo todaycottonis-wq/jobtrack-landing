@@ -1,0 +1,18 @@
+Copyright (c) 2026 Career up (커리업)
+
+All rights reserved.
+
+This landing page (the "Software") and its contents — including layout, copy,
+mock illustrations, design — are proprietary and confidential. Unauthorized
+copying, modification, distribution, sublicensing, public display, or use of
+any part of the Software, via any medium, is strictly prohibited without the
+express prior written permission of the copyright holder.
+
+The Software is provided "AS IS", without warranty of any kind.
+
+──────────────────────────────────────────────────────────────────────────────
+
+This page loads the following open source assets at runtime:
+
+  - Tailwind CSS    MIT       https://github.com/tailwindlabs/tailwindcss
+  - Pretendard      OFL-1.1   https://github.com/orioncactus/pretendard
