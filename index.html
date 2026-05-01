@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#3182F6" />
   <title>커리업 (Career up) · 커리어를 한 칸 올리는 취준 대시보드</title>
-  <meta name="description" content="지원 현황, 면접 일정, 이력서·자소서까지 한 화면에서 관리하는 취준생 대시보드. 노션·엑셀·메모장 사이를 더 이상 옮겨다니지 마세요." />
+  <meta name="description" content="지원 현황·면접 일정·이력서·자소서까지 한 화면에서 관리하는 취준생 대시보드." />
 
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="ko_KR" />
@@ -67,7 +67,7 @@
       { "@type": "Question", "name": "진짜 무료인가요?", "acceptedAnswer": { "@type": "Answer", "text": "2026년 5월 기준 베타 서비스로 출시되어 모든 기능을 무료로 제공합니다." } },
       { "@type": "Question", "name": "제 데이터는 안전한가요?", "acceptedAnswer": { "@type": "Answer", "text": "모든 데이터는 본인 계정으로만 접근 가능합니다 (Row Level Security)." } },
       { "@type": "Question", "name": "모바일에서도 잘 되나요?", "acceptedAnswer": { "@type": "Answer", "text": "모바일·태블릿·데스크탑 모두 최적화되어 있습니다." } },
-      { "@type": "Question", "name": "기존 노션/엑셀 데이터를 옮길 수 있나요?", "acceptedAnswer": { "@type": "Answer", "text": "노션 페이지는 문서함에서 URL을 붙여넣으면 바로 연결됩니다. 엑셀 일괄 가져오기는 다음 업데이트에서 추가될 예정입니다." } }
+      { "@type": "Question", "name": "데스크톱 앱처럼 쓸 수 있나요?", "acceptedAnswer": { "@type": "Answer", "text": "브라우저 주소창의 '설치' 버튼으로 PC·모바일에 앱처럼 설치할 수 있습니다." } }
     ]
   }
   </script>
@@ -108,11 +108,10 @@
         <img src="/icon-64.png" alt="커리업" width="28" height="28" class="rounded-md" />
         <span class="text-base font-bold tracking-tight">Career up</span>
       </a>
-      <nav class="hidden md:flex items-center gap-6 text-sm text-zinc-600">
-        <a href="#features" class="hover:text-zinc-900 transition-colors">기능</a>
-        <a href="#why" class="hover:text-zinc-900 transition-colors">왜 써야 할까</a>
-        <a href="#how" class="hover:text-zinc-900 transition-colors">사용 흐름</a>
-        <a href="#faq" class="hover:text-zinc-900 transition-colors">자주 묻는 질문</a>
+      <nav class="hidden md:flex items-center gap-7 text-sm text-zinc-600">
+        <a href="#features" class="hover:text-zinc-900 transition-colors">기능 둘러보기</a>
+        <a href="#how" class="hover:text-zinc-900 transition-colors">시작하기</a>
+        <a href="#faq" class="hover:text-zinc-900 transition-colors">FAQ</a>
       </nav>
       <a href="https://job-kappa-coral.vercel.app/login" class="rounded-lg bg-zinc-900 hover:bg-zinc-700 transition-colors px-3.5 py-1.5 text-xs sm:text-sm font-semibold text-white">
         활용해보기
@@ -121,28 +120,27 @@
   </header>
 
   <!-- 히어로 -->
-  <section class="grid-bg">
-    <div class="mx-auto max-w-3xl px-5 sm:px-8 pt-16 sm:pt-24 pb-16 sm:pb-20 text-center reveal">
-      <span class="inline-block rounded-full border border-brand/20 bg-brand/5 text-brand text-xs font-semibold px-3 py-1 mb-5">
-        🎯 베타 출시 · 가입 30초
+  <section>
+    <div class="mx-auto max-w-3xl px-5 sm:px-8 pt-20 sm:pt-28 pb-14 sm:pb-16 text-center reveal">
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white text-zinc-600 text-[11px] font-medium px-3 py-1 mb-7">
+        <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+        베타 운영 · 가입 30초
       </span>
-      <h1 class="text-[34px] sm:text-[52px] font-bold tracking-tight leading-[1.12]">
-        흩어진 취준,<br/>
-        <span class="bg-gradient-to-r from-brand to-blue-500 bg-clip-text text-transparent">한 곳에서.</span>
+      <h1 class="text-[36px] sm:text-[56px] font-bold tracking-tight leading-[1.1] text-zinc-900">
+        흩어진 취준,<br/>한 곳에서.
       </h1>
-      <p class="mt-6 text-base sm:text-xl text-zinc-500 leading-relaxed">
-        노션·엑셀·메모장 사이를 옮겨다니지 마세요.<br class="hidden sm:block"/>
-        지원 현황, 면접 일정, 이력서까지 — 커리업 하나로 끝.
+      <p class="mt-5 text-base sm:text-lg text-zinc-500 leading-relaxed">
+        지원 현황·면접 일정·이력서·자소서까지 한 화면에서.
       </p>
 
-      <div class="mt-9 flex flex-col sm:flex-row gap-3 justify-center">
+      <div class="mt-8 flex flex-col sm:flex-row gap-2.5 justify-center">
         <a href="https://job-kappa-coral.vercel.app/login"
-           class="inline-flex items-center justify-center gap-2 rounded-xl bg-brand hover:bg-blue-600 active:bg-blue-700 transition-colors px-7 py-3.5 text-sm font-semibold text-white shadow-[0_8px_24px_rgba(49,130,246,0.3)]">
+           class="inline-flex items-center justify-center gap-1.5 rounded-xl bg-zinc-900 hover:bg-zinc-700 transition-colors px-6 py-3 text-sm font-semibold text-white">
           활용해보기
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
         <a href="#why"
-           class="inline-flex items-center justify-center rounded-xl border border-zinc-200 bg-white hover:bg-zinc-50 transition-colors px-7 py-3.5 text-sm font-semibold text-zinc-700">
+           class="inline-flex items-center justify-center rounded-xl border border-zinc-200 bg-white hover:bg-zinc-50 transition-colors px-6 py-3 text-sm font-medium text-zinc-700">
           왜 써야 할까?
         </a>
       </div>
@@ -227,16 +225,16 @@
   <section class="mx-auto max-w-5xl px-5 sm:px-8 py-12 sm:py-16">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
       <div class="rounded-2xl border border-zinc-100 p-6 text-center bg-white">
-        <p class="text-3xl font-bold tracking-tight text-brand">0초</p>
-        <p class="mt-2 text-sm text-zinc-500">노션·엑셀 사이 이동 시간</p>
+        <p class="text-3xl font-bold tracking-tight text-brand">0원</p>
+        <p class="mt-2 text-sm text-zinc-500">베타 기간 모든 기능 무료</p>
       </div>
       <div class="rounded-2xl border border-zinc-100 p-6 text-center bg-white">
         <p class="text-3xl font-bold tracking-tight text-brand">7단계</p>
-        <p class="mt-2 text-sm text-zinc-500">위시리스트→합격까지 자동 추적</p>
+        <p class="mt-2 text-sm text-zinc-500">지원부터 합격까지 자동 추적</p>
       </div>
       <div class="rounded-2xl border border-zinc-100 p-6 text-center bg-white">
-        <p class="text-3xl font-bold tracking-tight text-brand">5초</p>
-        <p class="mt-2 text-sm text-zinc-500">다음 주 일정 한눈에 파악</p>
+        <p class="text-3xl font-bold tracking-tight text-brand">1분</p>
+        <p class="mt-2 text-sm text-zinc-500">가입부터 첫 등록까지</p>
       </div>
     </div>
   </section>
@@ -337,12 +335,12 @@
             </div>
           </div>
           <p class="text-sm text-zinc-600 leading-relaxed">
-            회사명, 직무, 지원일, 마감일, 메모까지. 7가지 진행 상태로 자동 분류되고, 필터로 원하는 항목만 골라봅니다.
+            회사·직무·일정을 한 화면에서. 진행 상태별로 자동 정리돼요.
           </p>
           <ul class="mt-4 space-y-1.5 text-xs text-zinc-500">
-            <li>✓ 위시리스트 / 지원완료 / 서류심사 / 면접 / 최종합격 / 불합격 / 취소</li>
-            <li>✓ 회사·직무 무제한 추가</li>
-            <li>✓ 모바일에서도 한 손 조작</li>
+            <li>✓ 위시리스트부터 합격까지 7단계</li>
+            <li>✓ 회사·직무 자유롭게 추가</li>
+            <li>✓ 모바일에서도 한 손에</li>
           </ul>
         </article>
 
@@ -394,12 +392,12 @@
             </div>
           </div>
           <p class="text-sm text-zinc-600 leading-relaxed">
-            면접·마감일·팔로우업을 색깔로 구분. 날짜 클릭 한 번이면 일정 추가. 다음 일정이 무엇인지 한눈에 보입니다.
+            면접·마감을 색깔로 구분. 날짜 클릭 한 번에 일정 추가.
           </p>
           <ul class="mt-4 space-y-1.5 text-xs text-zinc-500">
-            <li>✓ 면접 / 마감 / 팔로우업 / 기타 4가지 유형</li>
-            <li>✓ 미팅 URL · 장소 · 메모 보관</li>
-            <li>✓ 월간 한눈 뷰</li>
+            <li>✓ 한국 공휴일 자동 표시</li>
+            <li>✓ 일정 유형 직접 만들기</li>
+            <li>✓ 미팅 URL·장소 함께 저장</li>
           </ul>
         </article>
 
@@ -435,12 +433,12 @@
             </div>
             <div class="rounded-lg border border-zinc-100 p-2.5">
               <div class="flex items-start gap-1.5">
-                <div class="w-7 h-7 rounded-md bg-zinc-900 flex items-center justify-center">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                <div class="w-7 h-7 rounded-md bg-zinc-100 flex items-center justify-center">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
                 </div>
                 <div class="min-w-0">
-                  <p class="text-[11px] font-medium truncate">자소서 노션 ↗</p>
-                  <p class="text-[9px] text-zinc-400">노션 · 자기소개서</p>
+                  <p class="text-[11px] font-medium truncate">자기소개서_v3.docx</p>
+                  <p class="text-[9px] text-zinc-400">자기소개서</p>
                 </div>
               </div>
             </div>
@@ -457,13 +455,12 @@
             </div>
           </div>
           <p class="text-sm text-zinc-600 leading-relaxed">
-            이력서, 자기소개서, 포트폴리오를 폴더별로 정리. 회사별로 다른 버전을 관리하기에 딱 좋아요.
+            이력서·포트폴리오를 폴더별로 정리. 클릭하면 그 자리에서 바로 보여요.
           </p>
           <ul class="mt-4 space-y-1.5 text-xs text-zinc-500">
-            <li>✓ PDF / PNG / JPG 업로드 (10MB)</li>
-            <li>✓ <strong class="text-zinc-700">노션 페이지 링크 연결</strong> — 노션에 작성한 자료 그대로 가져오기</li>
-            <li>✓ 이모지 폴더로 직관적 분류</li>
-            <li>✓ 본인만 접근 — 안전한 비공개 저장</li>
+            <li>✓ PDF·이미지 업로드 (10MB)</li>
+            <li>✓ 외부 문서 링크 연결</li>
+            <li>✓ 회사·용도별 폴더 분류</li>
           </ul>
         </article>
 
@@ -520,12 +517,12 @@
             </div>
           </div>
           <p class="text-sm text-zinc-600 leading-relaxed">
-            이력서를 업로드하면 Claude가 직무별 강점과 보완점을 분석. 적합 직무 추천, 섹션별 리뷰, 커리어 경로 제안까지.
+            이력서를 올리면 직무별 강점과 보완점을 짚어드려요.
           </p>
           <ul class="mt-4 space-y-1.5 text-xs text-zinc-500">
-            <li>✓ 또래 대비 돋보이는 영역 / 채워가면 좋은 영역</li>
-            <li>✓ Best Match 직무 + 추천 회사</li>
-            <li>✓ 단기/중기/장기 커리어 경로</li>
+            <li>✓ 또래 대비 강점·보완점</li>
+            <li>✓ 잘 맞는 직무 추천</li>
+            <li>✓ 커리어 경로 제안</li>
           </ul>
         </article>
       </div>
@@ -537,20 +534,18 @@
           <div class="w-8 h-8 rounded-lg bg-brand/10 text-brand flex items-center justify-center">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>
           </div>
-          <h3 class="text-[17px] font-bold">자소서 작성 · 노션식 폴더 구조</h3>
+          <h3 class="text-[17px] font-bold">자소서 작성</h3>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-[1fr_280px] gap-5">
           <div>
             <p class="text-sm text-zinc-600 leading-relaxed">
-              회사별 폴더 안에 문항을 페이지로 추가. 글자수 제한·공백 포함/제외 토글·실시간 카운터·1.5초 자동 저장까지. 노션 사용자에게 익숙한 흐름으로 자소서 작성에만 집중하세요.
+              회사별 폴더에 문항을 모아 작성. 1.5초마다 자동 저장돼요.
             </p>
             <ul class="mt-4 space-y-1.5 text-xs text-zinc-500">
-              <li>✓ 회사 폴더 / 문항 페이지 <strong class="text-zinc-700">3-Level 중첩 구조</strong></li>
-              <li>✓ 글자수 카운터 + <strong class="text-zinc-700">공백 포함/제외 토글</strong> (문항별 설정)</li>
-              <li>✓ <strong class="text-zinc-700">1.5초 자동 저장</strong> + 수동 저장 버튼 (저장 안심 인디케이터)</li>
-              <li>✓ <strong class="text-zinc-700">드래그로 문항 순서 변경</strong></li>
-              <li>✓ 작성 진행률 자동 계산 (전체 문항 중 작성된 비율)</li>
+              <li>✓ 글자수 카운터 (공백 포함·제외)</li>
+              <li>✓ 1.5초 자동 저장</li>
+              <li>✓ 드래그로 문항 순서 변경</li>
             </ul>
           </div>
 
@@ -659,11 +654,11 @@
         </details>
         <details class="group rounded-2xl border border-zinc-100 bg-white p-5 [&_summary::-webkit-details-marker]:hidden">
           <summary class="flex items-center justify-between cursor-pointer text-sm font-semibold">
-            기존 노션/엑셀 데이터를 옮길 수 있나요?
+            데스크톱 앱처럼 쓸 수 있나요?
             <span class="text-zinc-400 group-open:rotate-180 transition-transform">▾</span>
           </summary>
           <p class="mt-3 text-sm text-zinc-600 leading-relaxed">
-            노션 페이지는 <strong>문서함 → 문서 추가 → 노션 링크</strong>에서 URL을 붙여넣으면 바로 연결됩니다. 클릭하면 노션이 새 탭에서 열려요. 엑셀 일괄 가져오기(CSV)는 다음 업데이트에서 추가될 예정입니다.
+            네, 브라우저 주소창의 <strong>설치</strong> 버튼으로 PC와 모바일에 앱처럼 설치할 수 있어요. 설치하면 독립된 창으로 열리고, 알림도 받을 수 있습니다.
           </p>
         </details>
         <details class="group rounded-2xl border border-zinc-100 bg-white p-5 [&_summary::-webkit-details-marker]:hidden">
