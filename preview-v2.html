@@ -26,7 +26,7 @@
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
 
   <style>
-    html { scroll-behavior: smooth; scroll-padding-top: 120px; }
+    html { scroll-padding-top: 112px; }
     body {
       font-family: 'Pretendard', system-ui, sans-serif;
       min-width: 1080px; /* 데스크톱 고정 — 모바일 반응형 미적용 */
@@ -209,9 +209,9 @@
               첫 화면에서.
             </h3>
             <p class="text-lg text-zinc-600 leading-relaxed mb-7">
-              진행 중인 지원과 다가오는 면접,<br/>
-              이번 달 합격률까지 —<br/>
-              로그인하자마자 한눈에 보고 바로 행동하세요.
+              진행 중인 지원과<br/>
+              다가오는 면접 일정을<br/>
+              로그인하자마자 한눈에 확인하세요.
             </p>
             <ul class="space-y-2.5 text-sm text-zinc-700">
               <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>진행 중 · 면접 예정 핵심 지표</span></li>
@@ -772,27 +772,37 @@
   </footer>
 
   <script>
-    // 탭 ↔ 스크롤 동기화
-    const tabs = document.querySelectorAll('.feat-tab');
-    const sections = Array.from(tabs).map(t => document.getElementById(t.dataset.target)).filter(Boolean);
+    (function () {
+      const tabs = document.querySelectorAll('.feat-tab');
+      const sections = Array.from(tabs)
+        .map(t => document.getElementById(t.dataset.target))
+        .filter(Boolean);
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          tabs.forEach(t => t.classList.toggle('is-active', t.dataset.target === entry.target.id));
-          // 활성 탭이 가로 스크롤 영역에서 안 보이면 스크롤
-          const activeTab = document.querySelector('.feat-tab.is-active');
-          if (activeTab) {
-            activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-          }
-        }
+      // 헤더(56) + 탭(48) + 여유(8)
+      const SCROLL_OFFSET = 112;
+
+      // 1) 탭 클릭 → 정확히 해당 섹션 시작점으로 스크롤
+      tabs.forEach(tab => {
+        tab.addEventListener('click', (e) => {
+          e.preventDefault();
+          const target = document.getElementById(tab.dataset.target);
+          if (!target) return;
+          const y = target.getBoundingClientRect().top + window.pageYOffset - SCROLL_OFFSET;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        });
       });
-    }, {
-      rootMargin: '-40% 0px -40% 0px',
-      threshold: 0,
-    });
 
-    sections.forEach(s => observer.observe(s));
+      // 2) 스크롤에 따라 active 탭만 업데이트 (탭 자체는 가만히)
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            tabs.forEach(t => t.classList.toggle('is-active', t.dataset.target === entry.target.id));
+          }
+        });
+      }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+
+      sections.forEach(s => observer.observe(s));
+    })();
   </script>
 
 </body>
