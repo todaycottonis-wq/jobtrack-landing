@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#3182F6" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>커리업 — 기능 섹션 v2 (Preview)</title>
+
+  <link rel="icon" type="image/png" sizes="64x64" href="/icon-64.png" />
+  <link rel="apple-touch-icon" href="/icon-192.png" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { brand: '#3182F6' },
+          fontFamily: { sans: ['Pretendard', 'system-ui', 'sans-serif'] },
+        },
+      },
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+
+  <style>
+    html { scroll-behavior: smooth; scroll-padding-top: 120px; }
+    body { font-family: 'Pretendard', system-ui, sans-serif; }
+    .feat-tab {
+      position: relative;
+      padding: 10px 4px;
+      font-size: 14px;
+      color: #71717a;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: color .2s;
+    }
+    .feat-tab:hover { color: #18181b; }
+    .feat-tab.is-active {
+      color: #18181b;
+      font-weight: 700;
+    }
+    .feat-tab.is-active::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0; bottom: -1px;
+      height: 2px;
+      background: #3182F6;
+      border-radius: 2px;
+    }
+    .hero-glow {
+      background-image:
+        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(49,130,246,0.18), transparent 60%),
+        radial-gradient(circle at 15% 30%, rgba(99,102,241,0.10), transparent 45%),
+        radial-gradient(circle at 85% 20%, rgba(49,130,246,0.10), transparent 45%);
+    }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes floaty { 0%,100% { transform: translateY(0) rotate(8deg); } 50% { transform: translateY(-10px) rotate(8deg); } }
+    @keyframes floaty2 { 0%,100% { transform: translateY(0) rotate(-12deg); } 50% { transform: translateY(-14px) rotate(-12deg); } }
+    .reveal { animation: fadeUp .6s ease-out both; }
+    .float-1 { animation: floaty 6s ease-in-out infinite; }
+    .float-2 { animation: floaty2 7s ease-in-out infinite; }
+    /* 차트용 bar 애니메이션 */
+    @keyframes barGrow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+    .bar { transform-origin: bottom; animation: barGrow .8s ease-out both; }
+  </style>
+</head>
+<body class="bg-white text-zinc-900">
+
+  <!-- Preview 배너 -->
+  <div class="bg-amber-50 border-b border-amber-200 text-center text-[12px] py-2 px-4 text-amber-800">
+    🎨 <strong>Preview v2</strong> · 기능 섹션 새 레이아웃 (실제 배포 X) ·
+    <a href="/" class="underline hover:text-amber-900">현재 라이브로</a>
+  </div>
+
+  <!-- 헤더 -->
+  <header class="sticky top-0 z-30 border-b border-zinc-100 bg-white/85 backdrop-blur-md">
+    <div class="mx-auto max-w-6xl px-5 sm:px-8 h-14 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-1.5">
+        <img src="/icon-64.png" alt="커리업" width="28" height="28" class="rounded-md" />
+        <span class="text-base font-bold tracking-tight">Career up</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-7 text-sm text-zinc-600">
+        <a href="#features" class="hover:text-zinc-900 transition-colors">기능 둘러보기</a>
+        <a href="#how" class="hover:text-zinc-900 transition-colors">시작하기</a>
+        <a href="#faq" class="hover:text-zinc-900 transition-colors">FAQ</a>
+      </nav>
+      <a href="https://job-kappa-coral.vercel.app/login" class="rounded-lg bg-zinc-900 hover:bg-zinc-700 transition-colors px-3.5 py-1.5 text-xs sm:text-sm font-semibold text-white">
+        활용해보기
+      </a>
+    </div>
+  </header>
+
+  <!-- 히어로 (그라디언트 + 로고) -->
+  <section class="relative overflow-hidden hero-glow">
+    <div class="float-1 pointer-events-none absolute top-12 right-[6%] hidden md:block opacity-[0.12]">
+      <img src="/icon-192.png" width="200" height="200" alt="" />
+    </div>
+    <div class="float-2 pointer-events-none absolute bottom-6 left-[6%] hidden md:block opacity-[0.08]">
+      <img src="/icon-192.png" width="140" height="140" alt="" />
+    </div>
+
+    <div class="relative mx-auto max-w-3xl px-5 sm:px-8 pt-16 sm:pt-24 pb-12 sm:pb-14 text-center reveal">
+      <div class="mx-auto w-16 h-16 sm:w-[72px] sm:h-[72px] mb-6 rounded-2xl bg-white shadow-[0_12px_36px_rgba(49,130,246,0.22)] flex items-center justify-center ring-1 ring-zinc-100">
+        <img src="/icon-192.png" width="44" height="44" alt="커리업" class="w-9 h-9 sm:w-11 sm:h-11" />
+      </div>
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white/80 backdrop-blur-sm text-zinc-600 text-[11px] font-medium px-3 py-1 mb-6">
+        <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+        베타 운영 · 가입 30초
+      </span>
+      <h1 class="text-[36px] sm:text-[56px] font-bold tracking-tight leading-[1.1] text-zinc-900">
+        흩어진 취준,<br/>
+        <span class="bg-gradient-to-r from-brand to-indigo-500 bg-clip-text text-transparent">한 곳에서.</span>
+      </h1>
+      <p class="mt-5 text-base sm:text-lg text-zinc-500 leading-relaxed">
+        지원 현황·면접 일정·이력서·자소서까지 한 화면에서.
+      </p>
+      <div class="mt-8 flex flex-col sm:flex-row gap-2.5 justify-center">
+        <a href="https://job-kappa-coral.vercel.app/login"
+           class="inline-flex items-center justify-center gap-1.5 rounded-xl bg-zinc-900 hover:bg-zinc-700 transition-colors px-6 py-3 text-sm font-semibold text-white shadow-[0_8px_24px_rgba(0,0,0,0.12)]">
+          활용해보기
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="#features"
+           class="inline-flex items-center justify-center rounded-xl border border-zinc-200 bg-white/80 backdrop-blur-sm hover:bg-white transition-colors px-6 py-3 text-sm font-medium text-zinc-700">
+          기능 둘러보기
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========== 새 기능 섹션 시작 (탭 + 가로 풀폭) =========== -->
+  <section id="features" class="bg-zinc-50 border-y border-zinc-100">
+
+    <!-- 섹션 인트로 -->
+    <div class="mx-auto max-w-5xl px-5 sm:px-8 pt-16 sm:pt-24 pb-8 text-center reveal">
+      <p class="text-xs font-semibold text-brand mb-2 tracking-widest">FEATURES</p>
+      <h2 class="text-[26px] sm:text-[36px] font-bold tracking-tight leading-tight">
+        취준의 모든 흐름,<br class="sm:hidden"/>한 화면에서.
+      </h2>
+      <p class="mt-4 text-sm sm:text-base text-zinc-500 leading-relaxed">
+        대시보드부터 자소서까지 — 탭으로 넘기면서 둘러보세요.
+      </p>
+    </div>
+
+    <!-- Sticky 탭 네비 -->
+    <div id="featTabs" class="sticky top-14 z-20 bg-zinc-50/95 backdrop-blur-md border-b border-zinc-200/70">
+      <div class="mx-auto max-w-6xl px-5 sm:px-8 overflow-x-auto scrollbar-hide">
+        <nav class="flex gap-6 sm:gap-9 whitespace-nowrap">
+          <a href="#feat-dashboard"   class="feat-tab is-active" data-target="feat-dashboard">대시보드</a>
+          <a href="#feat-applications" class="feat-tab" data-target="feat-applications">지원 현황</a>
+          <a href="#feat-calendar"     class="feat-tab" data-target="feat-calendar">캘린더</a>
+          <a href="#feat-documents"    class="feat-tab" data-target="feat-documents">문서함</a>
+          <a href="#feat-essays"       class="feat-tab" data-target="feat-essays">자소서</a>
+          <a href="#feat-ai"           class="feat-tab" data-target="feat-ai">AI 피드백</a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- ============ Section 1: 대시보드 (NEW) ============ -->
+    <article id="feat-dashboard" class="scroll-mt-28">
+      <div class="mx-auto max-w-6xl px-5 sm:px-8 py-20 sm:py-28">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <div class="reveal order-2 lg:order-1">
+            <span class="inline-flex items-center gap-1.5 rounded-full bg-brand/10 text-brand text-[11px] font-bold px-2.5 py-1 mb-4">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+              NEW · 대시보드
+            </span>
+            <h3 class="text-[28px] sm:text-[40px] font-bold tracking-tight leading-[1.15] mb-5">
+              오늘 챙길 것을<br/>첫 화면에서.
+            </h3>
+            <p class="text-base sm:text-lg text-zinc-600 leading-relaxed mb-7">
+              진행 중인 지원, 다가오는 면접, 이번 달 합격률까지 — 로그인하자마자 한눈에 보고 바로 행동하세요.
+            </p>
+            <ul class="space-y-2.5 text-sm text-zinc-700">
+              <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>진행 중·면접·합격·이번 달 지원 4가지 핵심 지표</span></li>
+              <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>월별 지원 추이 그래프</span></li>
+              <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>다가오는 7일 일정 미리보기</span></li>
+              <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>진행 단계별 분포 도넛 차트</span></li>
+            </ul>
+          </div>
+          <!-- Mock: 대시보드 -->
+          <div class="order-1 lg:order-2 reveal">
+            <div class="rounded-2xl border border-zinc-200 bg-white shadow-[0_24px_64px_rgba(0,0,0,0.08)] overflow-hidden">
+              <div class="flex items-center gap-1.5 px-4 py-2.5 border-b border-zinc-100 bg-zinc-50">
+                <span class="w-2.5 h-2.5 rounded-full bg-red-300"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-yellow-300"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-green-300"></span>
+                <span class="ml-3 text-[10px] text-zinc-400">취준 대시보드</span>
+              </div>
+              <div class="p-4 sm:p-5">
+                <p class="text-sm font-bold mb-3">취준 대시보드</p>
+                <!-- stats grid -->
+                <div class="grid grid-cols-2 gap-2 mb-4">
+                  <div class="rounded-xl border border-zinc-100 p-3">
+                    <div class="flex items-center justify-between text-[10px] text-zinc-500 font-medium">
+                      <span>진행 중</span>
+                      <span class="w-5 h-5 rounded bg-brand/10 text-brand flex items-center justify-center text-[10px]">📋</span>
+                    </div>
+                    <p class="text-xl font-bold mt-1.5">12</p>
+                    <p class="text-[9px] text-zinc-400">전체 24건</p>
+                  </div>
+                  <div class="rounded-xl border border-zinc-100 p-3">
+                    <div class="flex items-center justify-between text-[10px] text-zinc-500 font-medium">
+                      <span>면접 예정</span>
+                      <span class="w-5 h-5 rounded bg-purple-100 text-purple-600 flex items-center justify-center text-[10px]">📅</span>
+                    </div>
+                    <p class="text-xl font-bold mt-1.5">3</p>
+                    <p class="text-[9px] text-zinc-400">현재 면접 단계</p>
+                  </div>
+                  <div class="rounded-xl border border-zinc-100 p-3">
+                    <div class="flex items-center justify-between text-[10px] text-zinc-500 font-medium">
+                      <span>최종 합격</span>
+                      <span class="w-5 h-5 rounded bg-green-100 text-green-600 flex items-center justify-center text-[10px]">🏆</span>
+                    </div>
+                    <p class="text-xl font-bold mt-1.5">2</p>
+                    <p class="text-[9px] text-zinc-400">합격률 8%</p>
+                  </div>
+                  <div class="rounded-xl border border-zinc-100 p-3">
+                    <div class="flex items-center justify-between text-[10px] text-zinc-500 font-medium">
+                      <span>이번 달</span>
+                      <span class="w-5 h-5 rounded bg-amber-100 text-amber-600 flex items-center justify-center text-[10px]">📈</span>
+                    </div>
+                    <p class="text-xl font-bold mt-1.5">8</p>
+                    <p class="text-[9px] text-zinc-400">최근 30일</p>
+                  </div>
+                </div>
+                <!-- chart -->
+                <div class="rounded-xl border border-zinc-100 p-3">
+                  <p class="text-[10px] font-bold mb-2">월별 지원 추이</p>
+                  <div class="flex items-end gap-1.5 h-16">
+                    <div class="flex-1 flex flex-col items-center gap-1">
+                      <div class="bar w-full rounded-t bg-brand/30" style="height: 30%; animation-delay: 0s"></div>
+                      <span class="text-[8px] text-zinc-400">12월</span>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center gap-1">
+                      <div class="bar w-full rounded-t bg-brand/40" style="height: 45%; animation-delay: .1s"></div>
+                      <span class="text-[8px] text-zinc-400">1월</span>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center gap-1">
+                      <div class="bar w-full rounded-t bg-brand/50" style="height: 55%; animation-delay: .2s"></div>
+                      <span class="text-[8px] text-zinc-400">2월</span>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center gap-1">
+                      <div class="bar w-full rounded-t bg-brand/60" style="height: 70%; animation-delay: .3s"></div>
+                      <span class="text-[8px] text-zinc-400">3월</span>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center gap-1">
+                      <div class="bar w-full rounded-t bg-brand/80" style="height: 85%; animation-delay: .4s"></div>
+                      <span class="text-[8px] text-zinc-400">4월</span>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center gap-1">
+                      <div class="bar w-full rounded-t bg-brand" style="height: 100%; animation-delay: .5s"></div>
+                      <span class="text-[8px] text-zinc-400 font-bold">5월</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ============ Section 2: 지원 현황 ============ -->
+    <article id="feat-applications" class="scroll-mt-28 bg-white border-y border-zinc-100">
+      <div class="mx-auto max-w-6xl px-5 sm:px-8 py-20 sm:py-28">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <!-- Mock: 지원 현황 (좌) -->
+          <div class="reveal">
+            <div class="rounded-2xl border border-zinc-200 bg-white shadow-[0_24px_64px_rgba(0,0,0,0.08)] overflow-hidden">
+              <div class="flex items-center justify-between px-4 py-3 border-b border-zinc-100 bg-zinc-50">
+                <p class="text-sm font-bold">지원 현황</p>
+                <span class="rounded-md bg-brand text-white text-[11px] font-medium px-2 py-1">+ 지원 추가</span>
+              </div>
+              <div class="p-4">
+                <div class="flex gap-1.5 mb-3 flex-wrap">
+                  <span class="rounded-full bg-zinc-900 text-white text-[10px] px-2.5 py-0.5">전체</span>
+                  <span class="rounded-full bg-zinc-100 text-zinc-600 text-[10px] px-2.5 py-0.5">서류</span>
+                  <span class="rounded-full bg-zinc-100 text-zinc-600 text-[10px] px-2.5 py-0.5">면접</span>
+                  <span class="rounded-full bg-zinc-100 text-zinc-600 text-[10px] px-2.5 py-0.5">합격</span>
+                </div>
+                <div class="space-y-2">
+                  <div class="flex items-center gap-3 p-2.5 rounded-lg border border-zinc-100">
+                    <span class="w-1 h-8 rounded-full bg-purple-400"></span>
+                    <div class="flex-1 min-w-0">
+                      <p class="text-xs font-semibold">카카오</p>
+                      <p class="text-[10px] text-zinc-400">프로덕트 디자이너</p>
+                    </div>
+                    <span class="rounded-full bg-purple-100 text-purple-700 text-[10px] px-2 py-0.5 font-medium">2차 면접</span>
+                  </div>
+                  <div class="flex items-center gap-3 p-2.5 rounded-lg border border-zinc-100">
+                    <span class="w-1 h-8 rounded-full bg-blue-400"></span>
+                    <div class="flex-1 min-w-0">
+                      <p class="text-xs font-semibold">토스</p>
+                      <p class="text-[10px] text-zinc-400">UX Researcher</p>
+                    </div>
+                    <span class="rounded-full bg-blue-100 text-blue-700 text-[10px] px-2 py-0.5 font-medium">지원 완료</span>
+                  </div>
+                  <div class="flex items-center gap-3 p-2.5 rounded-lg border border-zinc-100">
+                    <span class="w-1 h-8 rounded-full bg-amber-400"></span>
+                    <div class="flex-1 min-w-0">
+                      <p class="text-xs font-semibold">네이버</p>
+                      <p class="text-[10px] text-zinc-400">서비스 기획자</p>
+                    </div>
+                    <span class="rounded-full bg-amber-100 text-amber-700 text-[10px] px-2 py-0.5 font-medium">인적성</span>
+                  </div>
+                  <div class="flex items-center gap-3 p-2.5 rounded-lg border border-zinc-100">
+                    <span class="w-1 h-8 rounded-full bg-green-400"></span>
+                    <div class="flex-1 min-w-0">
+                      <p class="text-xs font-semibold">당근</p>
+                      <p class="text-[10px] text-zinc-400">콘텐츠 전략</p>
+                    </div>
+                    <span class="rounded-full bg-green-100 text-green-700 text-[10px] px-2 py-0.5 font-medium">최종 합격</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 텍스트 (우) -->
+          <div class="reveal">
+            <p class="text-xs font-bold text-brand tracking-widest mb-3">APPLICATIONS</p>
+            <h3 class="text-[28px] sm:text-[40px] font-bold tracking-tight leading-[1.15] mb-5">
+              위시리스트부터 합격까지,<br/>7단계로 자동 정리.
+            </h3>
+            <p class="text-base sm:text-lg text-zinc-600 leading-relaxed mb-7">
+              회사·직무·일정·메모를 한 화면에서. 진행 단계별로 자동 분류되니까 어디까지 갔는지 헷갈리지 않아요.
+            </p>
+            <ul class="space-y-2.5 text-sm text-zinc-700">
+              <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>위시리스트 → 지원 → 인적성 → 1·2차 면접 → 합격</span></li>
+              <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>회사·직무 자유롭게 추가</span></li>
+              <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>모바일에서도 한 손에</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ============ Section 3: 캘린더 ============ -->
+    <article id="feat-calendar" class="scroll-mt-28">
+      <div class="mx-auto max-w-6xl px-5 sm:px-8 py-20 sm:py-28">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <div class="reveal order-2 lg:order-1">
+            <p class="text-xs font-bold text-brand tracking-widest mb-3">CALENDAR</p>
+            <h3 class="text-[28px] sm:text-[40px] font-bold tracking-tight leading-[1.15] mb-5">
+              면접·마감을 한눈에,<br/>색깔로 구분.
+            </h3>
+            <p class="text-base sm:text-lg text-zinc-600 leading-relaxed mb-7">
+              다음 일정이 무엇인지 5초면 파악. 한국 공휴일도 자동으로 표시돼요.
+            </p>
+            <ul class="space-y-2.5 text-sm text-zinc-700">
+              <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>한국 공휴일 자동 표시</span></li>
+              <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>일정 유형 직접 만들기</span></li>
+              <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>미팅 URL·장소 함께 저장</span></li>
+            </ul>
+          </div>
+          <!-- Mock: 캘린더 -->
+          <div class="order-1 lg:order-2 reveal">
+            <div class="rounded-2xl border border-zinc-200 bg-white shadow-[0_24px_64px_rgba(0,0,0,0.08)] p-4 sm:p-5">
+              <div class="flex items-center justify-between mb-3">
+                <p class="text-sm font-bold">2026년 5월</p>
+                <div class="flex gap-2 text-[10px] text-zinc-400">
+                  <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span>면접</span>
+                  <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>마감</span>
+                  <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>일정</span>
+                </div>
+              </div>
+              <div class="grid grid-cols-7 gap-1 text-[10px] text-zinc-400 mb-2 text-center">
+                <span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span>
+              </div>
+              <div class="grid grid-cols-7 gap-1 text-center">
+                <div class="aspect-square text-[10px] text-zinc-300 flex items-center justify-center">28</div>
+                <div class="aspect-square text-[10px] text-zinc-300 flex items-center justify-center">29</div>
+                <div class="aspect-square text-[10px] text-zinc-300 flex items-center justify-center">30</div>
+                <div class="aspect-square text-[10px] flex items-center justify-center">1</div>
+                <div class="aspect-square text-[10px] flex items-center justify-center">2</div>
+                <div class="aspect-square text-[10px] flex items-center justify-center relative">3<span class="absolute bottom-0.5 w-1 h-1 rounded-full bg-purple-500"></span></div>
+                <div class="aspect-square text-[10px] flex items-center justify-center text-blue-500">4</div>
+                <div class="aspect-square text-[10px] flex items-center justify-center text-red-500 font-bold">5<span class="block text-[7px] -mt-0.5 font-normal">어린이</span></div>
+                <div class="aspect-square text-[10px] flex items-center justify-center">6</div>
+                <div class="aspect-square text-[10px] flex items-center justify-center bg-brand text-white rounded-full font-bold">7</div>
+                <div class="aspect-square text-[10px] flex items-center justify-center relative">8<span class="absolute bottom-0.5 w-1 h-1 rounded-full bg-red-500"></span></div>
+                <div class="aspect-square text-[10px] flex items-center justify-center">9</div>
+                <div class="aspect-square text-[10px] flex items-center justify-center">10</div>
+                <div class="aspect-square text-[10px] flex items-center justify-center text-blue-500">11</div>
+                <div class="aspect-square text-[10px] flex items-center justify-center text-red-500">12</div>
+                <div class="aspect-square text-[10px] flex items-center justify-center relative">13<span class="absolute bottom-0.5 w-1 h-1 rounded-full bg-purple-500"></span></div>
+                <div class="aspect-square text-[10px] flex items-center justify-center relative">14<span class="absolute bottom-0.5 w-1 h-1 rounded-full bg-amber-500"></span></div>
+                <div class="aspect-square text-[10px] flex items-center justify-center">15</div>
+                <div class="aspect-square text-[10px] flex items-center justify-center">16</div>
+                <div class="aspect-square text-[10px] flex items-center justify-center">17</div>
+                <div class="aspect-square text-[10px] flex items-center justify-center">18</div>
+                <div class="aspect-square text-[10px] flex items-center justify-center text-blue-500">19</div>
+                <div class="aspect-square text-[10px] flex items-center justify-center text-red-500">20</div>
+                <div class="aspect-square text-[10px] flex items-center justify-center">21</div>
+              </div>
+              <div class="mt-3 pt-3 border-t border-zinc-100">
+                <p class="text-[10px] font-bold mb-2">다가오는 일정</p>
+                <div class="space-y-1.5">
+                  <div class="flex items-center gap-2 text-[11px]">
+                    <span class="w-1 h-4 rounded-full bg-purple-500"></span>
+                    <span class="font-medium">카카오 2차 면접</span>
+                    <span class="ml-auto text-zinc-400">5/13</span>
+                  </div>
+                  <div class="flex items-center gap-2 text-[11px]">
+                    <span class="w-1 h-4 rounded-full bg-red-500"></span>
+                    <span class="font-medium">네이버 자소서 마감</span>
+                    <span class="ml-auto text-zinc-400">5/8</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ============ Section 4: 문서함 ============ -->
+    <article id="feat-documents" class="scroll-mt-28 bg-white border-y border-zinc-100">
+      <div class="mx-auto max-w-6xl px-5 sm:px-8 py-20 sm:py-28">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <!-- Mock: 문서함 -->
+          <div class="reveal">
+            <div class="rounded-2xl border border-zinc-200 bg-white shadow-[0_24px_64px_rgba(0,0,0,0.08)] p-4 sm:p-5">
+              <div class="flex items-center justify-between mb-3">
+                <p class="text-sm font-bold">문서함</p>
+                <span class="rounded-md bg-brand text-white text-[11px] font-medium px-2 py-1">+ 추가</span>
+              </div>
+              <div class="grid grid-cols-2 gap-2">
+                <div class="rounded-xl border border-zinc-100 p-3">
+                  <div class="flex items-start gap-2">
+                    <div class="w-9 h-9 rounded-lg bg-brand/10 flex items-center justify-center text-lg">📁</div>
+                    <div class="min-w-0 flex-1">
+                      <p class="text-xs font-semibold truncate">카카오 지원</p>
+                      <p class="text-[10px] text-zinc-400">폴더 · 4개 파일</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="rounded-xl border border-zinc-100 p-3">
+                  <div class="flex items-start gap-2">
+                    <div class="w-9 h-9 rounded-lg bg-amber-50 flex items-center justify-center text-lg">📁</div>
+                    <div class="min-w-0 flex-1">
+                      <p class="text-xs font-semibold truncate">토스 지원</p>
+                      <p class="text-[10px] text-zinc-400">폴더 · 2개 파일</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="rounded-xl border border-zinc-100 p-3">
+                  <div class="flex items-start gap-2">
+                    <div class="w-9 h-9 rounded-lg bg-zinc-100 flex items-center justify-center">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <p class="text-xs font-semibold truncate">이력서_2026.pdf</p>
+                      <p class="text-[10px] text-zinc-400">PDF · 이력서</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="rounded-xl border border-zinc-100 p-3">
+                  <div class="flex items-start gap-2">
+                    <div class="w-9 h-9 rounded-lg bg-zinc-100 flex items-center justify-center">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <p class="text-xs font-semibold truncate">자기소개서_v3.docx</p>
+                      <p class="text-[10px] text-zinc-400">DOCX · 자기소개서</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="rounded-xl border border-zinc-100 p-3">
+                  <div class="flex items-start gap-2">
+                    <div class="w-9 h-9 rounded-lg bg-zinc-900 flex items-center justify-center">
+                      <span class="text-white text-[10px] font-bold">N</span>
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <p class="text-xs font-semibold truncate">자소서 작성중 ↗</p>
+                      <p class="text-[10px] text-zinc-400">노션 링크</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="rounded-xl border border-zinc-100 p-3">
+                  <div class="flex items-start gap-2">
+                    <div class="w-9 h-9 rounded-lg bg-zinc-100 flex items-center justify-center">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <p class="text-xs font-semibold truncate">포트폴리오.pdf</p>
+                      <p class="text-[10px] text-zinc-400">PDF · 포트폴리오</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 텍스트 -->
+          <div class="reveal">
+            <p class="text-xs font-bold text-brand tracking-widest mb-3">DOCUMENTS</p>
+            <h3 class="text-[28px] sm:text-[40px] font-bold tracking-tight leading-[1.15] mb-5">
+              이력서·자소서·포트폴리오를<br/>한 곳에.
+            </h3>
+            <p class="text-base sm:text-lg text-zinc-600 leading-relaxed mb-7">
+              클릭 한 번이면 미리보기. 기업별로 폴더를 나눠 버전 관리도 깔끔하게.
+            </p>
+            <ul class="space-y-2.5 text-sm text-zinc-700">
+              <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>기업별 폴더로 정리</span></li>
+              <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>문서 형태별(PDF·이미지·docx) 업로드</span></li>
+              <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>노션 페이지 링크 연결</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ============ Section 5: 자소서 ============ -->
+    <article id="feat-essays" class="scroll-mt-28">
+      <div class="mx-auto max-w-6xl px-5 sm:px-8 py-20 sm:py-28">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <div class="reveal order-2 lg:order-1">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-xs font-bold text-brand tracking-widest">ESSAYS</span>
+              <span class="rounded-full bg-brand text-white text-[10px] font-bold px-2 py-0.5">NEW</span>
+            </div>
+            <h3 class="text-[28px] sm:text-[40px] font-bold tracking-tight leading-[1.15] mb-5">
+              회사별 문항을<br/>한 자리에 모아서.
+            </h3>
+            <p class="text-base sm:text-lg text-zinc-600 leading-relaxed mb-7">
+              흩어진 자소서 문서들을 회사별 폴더에 정리. 글자수까지 자동으로 세드려요.
+            </p>
+            <ul class="space-y-2.5 text-sm text-zinc-700">
+              <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>글자수 카운터 (공백 포함·제외)</span></li>
+              <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>드래그로 문항 순서 변경</span></li>
+              <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>작성 진행률 자동 표시</span></li>
+            </ul>
+          </div>
+          <!-- Mock: 자소서 에디터 -->
+          <div class="order-1 lg:order-2 reveal">
+            <div class="rounded-2xl border border-zinc-200 bg-white shadow-[0_24px_64px_rgba(0,0,0,0.08)] p-4 sm:p-5">
+              <div class="flex items-center justify-between text-[10px] text-zinc-400 mb-3">
+                <span>← 카카오 · 문항 1</span>
+                <span class="rounded bg-brand text-white px-2 py-0.5 font-bold">저장</span>
+              </div>
+              <p class="text-sm font-bold mb-3 leading-snug">1. 본인의 성장과정과 지원동기에 대해 자유롭게 서술해주세요.</p>
+              <div class="border-t border-zinc-100 pt-3">
+                <div class="space-y-1.5 mb-4">
+                  <div class="h-1.5 rounded bg-zinc-100 w-full"></div>
+                  <div class="h-1.5 rounded bg-zinc-100 w-11/12"></div>
+                  <div class="h-1.5 rounded bg-zinc-100 w-10/12"></div>
+                  <div class="h-1.5 rounded bg-zinc-100 w-full"></div>
+                  <div class="h-1.5 rounded bg-zinc-100 w-8/12"></div>
+                </div>
+                <div class="border-t border-zinc-100 pt-3">
+                  <div class="flex items-baseline justify-between mb-2">
+                    <div>
+                      <span class="text-2xl font-bold font-mono">487</span>
+                      <span class="text-[11px] text-zinc-400">/ 800</span>
+                      <span class="text-[10px] text-zinc-400 ml-1">(공백 포함)</span>
+                    </div>
+                    <span class="text-[10px] text-zinc-400">진행률 60%</span>
+                  </div>
+                  <div class="h-1.5 rounded-full bg-zinc-100 overflow-hidden">
+                    <div class="h-full bg-amber-500 rounded-full" style="width: 60%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ============ Section 6: AI 피드백 ============ -->
+    <article id="feat-ai" class="scroll-mt-28 bg-white border-y border-zinc-100">
+      <div class="mx-auto max-w-6xl px-5 sm:px-8 py-20 sm:py-28">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <!-- Mock: AI 피드백 -->
+          <div class="reveal">
+            <div class="rounded-2xl border border-zinc-200 bg-white shadow-[0_24px_64px_rgba(0,0,0,0.08)] p-4 sm:p-5 relative">
+              <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <p class="text-sm font-bold">또래 비교</p>
+                  <span class="text-[10px] text-zinc-400">상위 28%</span>
+                </div>
+                <div class="space-y-2">
+                  <div class="flex items-center gap-2">
+                    <span class="text-[11px] w-16 text-zinc-500">실행력</span>
+                    <div class="flex-1 h-2 rounded-full bg-zinc-100 overflow-hidden">
+                      <div class="h-full bg-brand rounded-full" style="width: 78%"></div>
+                    </div>
+                    <span class="text-[11px] text-zinc-700 w-7 text-right font-bold">78</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-[11px] w-16 text-zinc-500">데이터</span>
+                    <div class="flex-1 h-2 rounded-full bg-zinc-100 overflow-hidden">
+                      <div class="h-full bg-brand rounded-full" style="width: 62%"></div>
+                    </div>
+                    <span class="text-[11px] text-zinc-700 w-7 text-right font-bold">62</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-[11px] w-16 text-zinc-500">커뮤니케이션</span>
+                    <div class="flex-1 h-2 rounded-full bg-zinc-100 overflow-hidden">
+                      <div class="h-full bg-brand rounded-full" style="width: 85%"></div>
+                    </div>
+                    <span class="text-[11px] text-zinc-700 w-7 text-right font-bold">85</span>
+                  </div>
+                </div>
+                <div class="pt-3 border-t border-zinc-100">
+                  <p class="text-[10px] text-zinc-400 mb-2">Best Match 직무</p>
+                  <div class="flex gap-1.5 flex-wrap">
+                    <span class="rounded-full bg-brand/10 text-brand text-[11px] font-bold px-2.5 py-1">PM · 90%</span>
+                    <span class="rounded-full bg-zinc-100 text-zinc-600 text-[11px] px-2.5 py-1">UX 리서처 · 78%</span>
+                    <span class="rounded-full bg-zinc-100 text-zinc-600 text-[11px] px-2.5 py-1">서비스 기획 · 71%</span>
+                  </div>
+                </div>
+              </div>
+              <div class="absolute inset-0 rounded-2xl backdrop-blur-[3px] bg-white/30 flex items-center justify-center">
+                <div class="rounded-full bg-zinc-900 text-white text-[12px] font-bold px-4 py-2 shadow-lg flex items-center gap-1.5">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                  출시 예정
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 텍스트 -->
+          <div class="reveal">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-xs font-bold text-brand tracking-widest">AI FEEDBACK</span>
+              <span class="rounded-full bg-amber-100 text-amber-700 text-[10px] font-bold px-2 py-0.5">출시 예정</span>
+            </div>
+            <h3 class="text-[28px] sm:text-[40px] font-bold tracking-tight leading-[1.15] mb-5">
+              이력서 한 번 올리면,<br/>강점이 보여요.
+            </h3>
+            <p class="text-base sm:text-lg text-zinc-600 leading-relaxed mb-7">
+              Claude가 직무별로 강점·보완점을 짚어드릴 거예요. 곧 만나요.
+            </p>
+            <ul class="space-y-2.5 text-sm text-zinc-700">
+              <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>또래 대비 강점·보완점</span></li>
+              <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>잘 맞는 직무 추천</span></li>
+              <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>커리어 경로 제안</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </section>
+  <!-- =========== 새 기능 섹션 끝 =========== -->
+
+  <!-- 마지막 CTA -->
+  <section>
+    <div class="mx-auto max-w-3xl px-5 sm:px-8 py-20 sm:py-28 text-center">
+      <h2 class="text-[28px] sm:text-[36px] font-bold tracking-tight leading-tight">
+        취준, 더 이상 외롭지 않게.
+      </h2>
+      <p class="mt-4 text-base sm:text-lg text-zinc-500">
+        오늘 가입하고 첫 지원부터 기록해보세요.
+      </p>
+      <a href="https://job-kappa-coral.vercel.app/login"
+         class="mt-9 inline-flex items-center justify-center gap-2 rounded-xl bg-brand hover:bg-blue-600 active:bg-blue-700 transition-colors px-8 py-4 text-sm font-semibold text-white shadow-[0_8px_24px_rgba(49,130,246,0.3)]">
+        활용해보기
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- 푸터 -->
+  <footer class="border-t border-zinc-100">
+    <div class="mx-auto max-w-6xl px-5 sm:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-zinc-400">
+      <div class="flex items-center gap-2">
+        <img src="/icon-64.png" alt="커리업" width="22" height="22" class="rounded-md" />
+        <span class="font-semibold text-zinc-600">Career up · 커리업</span>
+        <span>© 2026</span>
+      </div>
+      <p>🎨 Preview v2 · 실제 배포 안 됨</p>
+    </div>
+  </footer>
+
+  <script>
+    // 탭 ↔ 스크롤 동기화
+    const tabs = document.querySelectorAll('.feat-tab');
+    const sections = Array.from(tabs).map(t => document.getElementById(t.dataset.target)).filter(Boolean);
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tabs.forEach(t => t.classList.toggle('is-active', t.dataset.target === entry.target.id));
+          // 활성 탭이 가로 스크롤 영역에서 안 보이면 스크롤
+          const activeTab = document.querySelector('.feat-tab.is-active');
+          if (activeTab) {
+            activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          }
+        }
+      });
+    }, {
+      rootMargin: '-40% 0px -40% 0px',
+      threshold: 0,
+    });
+
+    sections.forEach(s => observer.observe(s));
+  </script>
+
+</body>
+</html>

@@ -54,7 +54,7 @@
     "name": "커리업",
     "alternateName": "Career up",
     "url": "https://jobtrack-landing.vercel.app/",
-    "logo": "https://jobtrack-landing.vercel.app/favicon.svg",
+    "logo": "https://jobtrack-landing.vercel.app/icon-192.png",
     "founder": { "@type": "Person", "name": "Cotton" },
     "email": "today.cotton.is@gmail.com"
   }
@@ -95,8 +95,18 @@
         radial-gradient(circle at 20% 0%, rgba(49,130,246,0.08), transparent 50%),
         radial-gradient(circle at 80% 0%, rgba(49,130,246,0.05), transparent 50%);
     }
+    .hero-glow {
+      background-image:
+        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(49,130,246,0.18), transparent 60%),
+        radial-gradient(circle at 15% 30%, rgba(99,102,241,0.10), transparent 45%),
+        radial-gradient(circle at 85% 20%, rgba(49,130,246,0.10), transparent 45%);
+    }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes floaty { 0%,100% { transform: translateY(0) rotate(8deg); } 50% { transform: translateY(-10px) rotate(8deg); } }
+    @keyframes floaty2 { 0%,100% { transform: translateY(0) rotate(-12deg); } 50% { transform: translateY(-14px) rotate(-12deg); } }
     .reveal { animation: fadeUp .6s ease-out both; }
+    .float-1 { animation: floaty 6s ease-in-out infinite; }
+    .float-2 { animation: floaty2 7s ease-in-out infinite; }
   </style>
 </head>
 <body class="bg-white text-zinc-900">
@@ -120,14 +130,28 @@
   </header>
 
   <!-- 히어로 -->
-  <section>
-    <div class="mx-auto max-w-3xl px-5 sm:px-8 pt-20 sm:pt-28 pb-14 sm:pb-16 text-center reveal">
-      <span class="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white text-zinc-600 text-[11px] font-medium px-3 py-1 mb-7">
+  <section class="relative overflow-hidden hero-glow">
+    <!-- 떠있는 아이콘 데코 -->
+    <div class="float-1 pointer-events-none absolute top-16 right-[6%] hidden md:block opacity-[0.12]">
+      <img src="/icon-192.png" width="200" height="200" alt="" />
+    </div>
+    <div class="float-2 pointer-events-none absolute bottom-8 left-[6%] hidden md:block opacity-[0.08]">
+      <img src="/icon-192.png" width="140" height="140" alt="" />
+    </div>
+
+    <div class="relative mx-auto max-w-3xl px-5 sm:px-8 pt-20 sm:pt-28 pb-14 sm:pb-16 text-center reveal">
+      <!-- 로고 카드 -->
+      <div class="mx-auto w-16 h-16 sm:w-[72px] sm:h-[72px] mb-6 rounded-2xl bg-white shadow-[0_12px_36px_rgba(49,130,246,0.22)] flex items-center justify-center ring-1 ring-zinc-100">
+        <img src="/icon-192.png" width="44" height="44" alt="커리업" class="w-9 h-9 sm:w-11 sm:h-11" />
+      </div>
+
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white/80 backdrop-blur-sm text-zinc-600 text-[11px] font-medium px-3 py-1 mb-6">
         <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
         베타 운영 · 가입 30초
       </span>
       <h1 class="text-[36px] sm:text-[56px] font-bold tracking-tight leading-[1.1] text-zinc-900">
-        흩어진 취준,<br/>한 곳에서.
+        흩어진 취준,<br/>
+        <span class="bg-gradient-to-r from-brand to-indigo-500 bg-clip-text text-transparent">한 곳에서.</span>
       </h1>
       <p class="mt-5 text-base sm:text-lg text-zinc-500 leading-relaxed">
         지원 현황·면접 일정·이력서·자소서까지 한 화면에서.
@@ -135,12 +159,12 @@
 
       <div class="mt-8 flex flex-col sm:flex-row gap-2.5 justify-center">
         <a href="https://job-kappa-coral.vercel.app/login"
-           class="inline-flex items-center justify-center gap-1.5 rounded-xl bg-zinc-900 hover:bg-zinc-700 transition-colors px-6 py-3 text-sm font-semibold text-white">
+           class="inline-flex items-center justify-center gap-1.5 rounded-xl bg-zinc-900 hover:bg-zinc-700 transition-colors px-6 py-3 text-sm font-semibold text-white shadow-[0_8px_24px_rgba(0,0,0,0.12)]">
           활용해보기
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
         <a href="#why"
-           class="inline-flex items-center justify-center rounded-xl border border-zinc-200 bg-white hover:bg-zinc-50 transition-colors px-6 py-3 text-sm font-medium text-zinc-700">
+           class="inline-flex items-center justify-center rounded-xl border border-zinc-200 bg-white/80 backdrop-blur-sm hover:bg-white transition-colors px-6 py-3 text-sm font-medium text-zinc-700">
           왜 써야 할까?
         </a>
       </div>
@@ -407,7 +431,7 @@
             <div class="w-8 h-8 rounded-lg bg-brand/10 text-brand flex items-center justify-center">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
             </div>
-            <h3 class="text-[17px] font-bold">문서함 + 폴더</h3>
+            <h3 class="text-[17px] font-bold">문서함</h3>
           </div>
           <!-- mock UI: 문서 카드 -->
           <div class="rounded-xl border border-zinc-100 bg-white shadow-[0_2px_8px_rgba(0,0,0,0.04)] p-3 mb-4 grid grid-cols-2 gap-2">
@@ -455,12 +479,12 @@
             </div>
           </div>
           <p class="text-sm text-zinc-600 leading-relaxed">
-            이력서·포트폴리오를 폴더별로 정리. 클릭하면 그 자리에서 바로 보여요.
+            이력서·자소서·포트폴리오를 한 곳에. 클릭하면 그 자리에서 바로 보여요.
           </p>
           <ul class="mt-4 space-y-1.5 text-xs text-zinc-500">
-            <li>✓ PDF·이미지 업로드 (10MB)</li>
-            <li>✓ 외부 문서 링크 연결</li>
-            <li>✓ 회사·용도별 폴더 분류</li>
+            <li>✓ 기업별 폴더로 정리</li>
+            <li>✓ 문서 형태별(PDF·이미지·docx) 업로드</li>
+            <li>✓ 노션 페이지 링크 연결</li>
           </ul>
         </article>
 
@@ -540,12 +564,12 @@
         <div class="grid grid-cols-1 md:grid-cols-[1fr_280px] gap-5">
           <div>
             <p class="text-sm text-zinc-600 leading-relaxed">
-              회사별 폴더에 문항을 모아 작성. 1.5초마다 자동 저장돼요.
+              회사별 폴더에 문항을 모아서 한 자리에 작성.
             </p>
             <ul class="mt-4 space-y-1.5 text-xs text-zinc-500">
               <li>✓ 글자수 카운터 (공백 포함·제외)</li>
-              <li>✓ 1.5초 자동 저장</li>
               <li>✓ 드래그로 문항 순서 변경</li>
+              <li>✓ 작성 진행률 자동 표시</li>
             </ul>
           </div>
 
