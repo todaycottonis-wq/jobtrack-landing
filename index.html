@@ -64,10 +64,11 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      { "@type": "Question", "name": "진짜 무료인가요?", "acceptedAnswer": { "@type": "Answer", "text": "2026년 5월 기준 베타 서비스로 출시되어 모든 기능을 무료로 제공합니다." } },
-      { "@type": "Question", "name": "제 데이터는 안전한가요?", "acceptedAnswer": { "@type": "Answer", "text": "모든 데이터는 본인 계정으로만 접근 가능합니다 (Row Level Security)." } },
+      { "@type": "Question", "name": "진짜 무료인가요?", "acceptedAnswer": { "@type": "Answer", "text": "2026년 5월 기준, 커리업은 베타 서비스로 출시되어 모든 기능을 무료로 제공하고 있습니다." } },
+      { "@type": "Question", "name": "제 데이터는 안전한가요?", "acceptedAnswer": { "@type": "Answer", "text": "모든 데이터는 본인 계정으로 접근 가능하고, 다른 유저 및 운영자 포함 들여다볼 수 없도록 분리되어 있어요." } },
       { "@type": "Question", "name": "모바일에서도 잘 되나요?", "acceptedAnswer": { "@type": "Answer", "text": "모바일·태블릿·데스크탑 모두 최적화되어 있습니다." } },
-      { "@type": "Question", "name": "데스크톱 앱처럼 쓸 수 있나요?", "acceptedAnswer": { "@type": "Answer", "text": "현재 macOS Chrome에서 지원합니다. Chrome 우측 상단의 점 세 개(⋮) → 전송·저장·공유 → 데스크톱에서 열기를 선택하면 독립된 창의 앱으로 설치됩니다." } }
+      { "@type": "Question", "name": "데스크톱 앱처럼 쓸 수 있나요?", "acceptedAnswer": { "@type": "Answer", "text": "현재 macOS Chrome에서 지원합니다. Chrome 우측 상단의 점 세 개(⋮) → 전송·저장·공유 → 데스크톱에서 열기를 선택하면 독립된 창의 앱으로 설치됩니다." } },
+      { "@type": "Question", "name": "AI 피드백은 언제 출시되나요?", "acceptedAnswer": { "@type": "Answer", "text": "현재 API 및 토큰 관련 개발 중이며, 올해 이내로 공개 예정입니다." } }
     ]
   }
   </script>
@@ -156,6 +157,27 @@
     .line-loop { stroke-dasharray: 600; animation: lineDraw 5s ease-in-out infinite; }
     @keyframes dotPulse { 0%,100% { transform: scale(1); opacity: .9; } 50% { transform: scale(1.4); opacity: 1; } }
     .dot-pulse { transform-origin: center; transform-box: fill-box; animation: dotPulse 1.6s ease-in-out infinite; }
+
+    /* 문서함 — 아이템이 하나씩 추가됐다 사라지는 무한 반복 */
+    @keyframes itemAdd {
+      0%      { opacity: 0; transform: translateY(8px) scale(.96); }
+      8%      { opacity: 1; transform: translateY(0) scale(1); }
+      88%     { opacity: 1; transform: translateY(0) scale(1); }
+      96%,100%{ opacity: 0; transform: translateY(-6px) scale(.96); }
+    }
+    .item-add { opacity: 0; animation: itemAdd 7s ease-in-out infinite; }
+    .item-add:nth-child(1) { animation-delay: 0s; }
+    .item-add:nth-child(2) { animation-delay: .35s; }
+    .item-add:nth-child(3) { animation-delay: .7s; }
+    .item-add:nth-child(4) { animation-delay: 1.05s; }
+    .item-add:nth-child(5) { animation-delay: 1.4s; }
+    .item-add:nth-child(6) { animation-delay: 1.75s; }
+    /* 새 항목 추가 시 살짝 빛나는 강조 */
+    @keyframes itemAddRing {
+      0%, 12% { box-shadow: 0 0 0 2px rgba(49,130,246,.35); }
+      30%, 100% { box-shadow: 0 0 0 0 rgba(49,130,246,0); }
+    }
+    .item-add { animation: itemAdd 7s ease-in-out infinite, itemAddRing 7s ease-in-out infinite; }
   </style>
 </head>
 <body class="bg-white text-zinc-900">
@@ -571,11 +593,11 @@
             <p class="text-xs font-bold text-brand tracking-widest mb-3">APPLICATIONS</p>
             <h3 class="text-[28px] sm:text-[40px] font-bold tracking-tight leading-[1.15] mb-5">
               위시리스트부터 합격까지,<br/>
-              7단계로 자동 정리.
+              7단계로 정리.
             </h3>
             <p class="text-base sm:text-lg text-zinc-600 leading-relaxed mb-7">
               회사·직무·일정·메모를 한 화면에서.<br/>
-              진행 단계별로 자동 분류되니까<br/>
+              진행 단계별로 정리하니까<br/>
               어디까지 갔는지 헷갈리지 않아요.
             </p>
             <ul class="space-y-2.5 text-sm text-zinc-700">
@@ -595,12 +617,13 @@
           <div class="reveal">
             <p class="text-xs font-bold text-brand tracking-widest mb-3">CALENDAR</p>
             <h3 class="text-[28px] sm:text-[40px] font-bold tracking-tight leading-[1.15] mb-5">
-              면접·마감을 한눈에,<br/>
-              색깔로 구분.
+              주요 일정을 한눈에<br/>
+              정리해보세요.
             </h3>
             <p class="text-base sm:text-lg text-zinc-600 leading-relaxed mb-7">
-              다음 일정이 무엇인지 5초면 파악.<br/>
-              한국 공휴일도 자동으로 표시돼요.
+              면접·마감일을 색깔로 구분.<br/>
+              다음 일정이 무엇인지 5초면 파악할 수 있어요.<br/>
+              한국 공휴일도 함께 표시돼요.
             </p>
             <ul class="space-y-2.5 text-sm text-zinc-700">
               <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>한국 공휴일 자동 표시</span></li>
@@ -679,7 +702,7 @@
                 <span class="rounded-md bg-brand text-white text-[11px] font-medium px-2 py-1">+ 추가</span>
               </div>
               <div class="grid grid-cols-2 gap-2">
-                <div class="rounded-xl border border-zinc-100 p-3">
+                <div class="item-add rounded-xl border border-zinc-100 p-3">
                   <div class="flex items-start gap-2">
                     <div class="w-9 h-9 rounded-lg bg-brand/10 flex items-center justify-center text-lg">📁</div>
                     <div class="min-w-0 flex-1">
@@ -688,7 +711,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="rounded-xl border border-zinc-100 p-3">
+                <div class="item-add rounded-xl border border-zinc-100 p-3">
                   <div class="flex items-start gap-2">
                     <div class="w-9 h-9 rounded-lg bg-amber-50 flex items-center justify-center text-lg">📁</div>
                     <div class="min-w-0 flex-1">
@@ -697,7 +720,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="rounded-xl border border-zinc-100 p-3">
+                <div class="item-add rounded-xl border border-zinc-100 p-3">
                   <div class="flex items-start gap-2">
                     <div class="w-9 h-9 rounded-lg bg-zinc-100 flex items-center justify-center">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
@@ -708,7 +731,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="rounded-xl border border-zinc-100 p-3">
+                <div class="item-add rounded-xl border border-zinc-100 p-3">
                   <div class="flex items-start gap-2">
                     <div class="w-9 h-9 rounded-lg bg-zinc-100 flex items-center justify-center">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
@@ -719,7 +742,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="rounded-xl border border-zinc-100 p-3">
+                <div class="item-add rounded-xl border border-zinc-100 p-3">
                   <div class="flex items-start gap-2">
                     <div class="w-9 h-9 rounded-lg bg-zinc-900 flex items-center justify-center">
                       <span class="text-white text-[10px] font-bold">N</span>
@@ -730,7 +753,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="rounded-xl border border-zinc-100 p-3">
+                <div class="item-add rounded-xl border border-zinc-100 p-3">
                   <div class="flex items-start gap-2">
                     <div class="w-9 h-9 rounded-lg bg-zinc-100 flex items-center justify-center">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
@@ -747,12 +770,12 @@
           <div class="reveal lg:order-2 order-1">
             <p class="text-xs font-bold text-brand tracking-widest mb-3">DOCUMENTS</p>
             <h3 class="text-[28px] sm:text-[40px] font-bold tracking-tight leading-[1.15] mb-5">
-              이력서·자소서·포트폴리오를<br/>
+              이력서 파일과 노션 링크를<br/>
               한 곳에.
             </h3>
             <p class="text-base sm:text-lg text-zinc-600 leading-relaxed mb-7">
-              클릭 한 번이면 미리보기.<br/>
-              기업별로 폴더를 나눠<br/>
+              파일을 올리거나 노션 링크를 붙여 넣으세요.<br/>
+              기업별 폴더로 정리해 두면<br/>
               버전 관리도 깔끔하게.
             </p>
             <ul class="space-y-2.5 text-sm text-zinc-700">
@@ -775,13 +798,13 @@
               <span class="rounded-full bg-brand text-white text-[10px] font-bold px-2 py-0.5">NEW</span>
             </div>
             <h3 class="text-[28px] sm:text-[40px] font-bold tracking-tight leading-[1.15] mb-5">
-              회사별 문항을<br/>
-              한 자리에 모아서.
+              회사별 자소서를<br/>
+              한 곳에 모아서 관리하세요.
             </h3>
             <p class="text-base sm:text-lg text-zinc-600 leading-relaxed mb-7">
-              흩어진 자소서 문서들을<br/>
-              회사별 폴더에 정리.<br/>
-              글자수까지 자동으로 세드려요.
+              별도 파일에 관리하는 번거로움은 그만!<br/>
+              회사별 문항 기입을 통해<br/>
+              편하게 관리해요.
             </p>
             <ul class="space-y-2.5 text-sm text-zinc-700">
               <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>글자수 카운터 (공백 포함·제외)</span></li>
@@ -881,18 +904,18 @@
               <span class="rounded-full bg-amber-100 text-amber-700 text-[10px] font-bold px-2 py-0.5">출시 예정</span>
             </div>
             <h3 class="text-[28px] sm:text-[40px] font-bold tracking-tight leading-[1.15] mb-5">
-              이력서 한 번 올리면,<br/>
-              강점이 보여요.
+              나의 강점은<br/>
+              무엇일까?
             </h3>
             <p class="text-base sm:text-lg text-zinc-600 leading-relaxed mb-7">
-              Claude가 직무별로<br/>
-              강점·보완점을 짚어드릴 거예요.<br/>
-              곧 만나요.
+              커리업만의 Agent가<br/>
+              나만의 강점과 보완점을<br/>
+              리뷰해줘요.
             </p>
             <ul class="space-y-2.5 text-sm text-zinc-700">
-              <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>또래 대비 강점·보완점</span></li>
+              <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>나만의 강점·보완점 분석</span></li>
               <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>잘 맞는 직무 추천</span></li>
-              <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>커리어 경로 제안</span></li>
+              <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>커리어 리포트 제공</span></li>
             </ul>
           </div>
         </div>
@@ -906,7 +929,7 @@
     <div class="text-center mb-12">
       <p class="text-xs font-semibold text-brand mb-2 tracking-widest">HOW IT WORKS</p>
       <h2 class="text-[26px] sm:text-[32px] font-bold tracking-tight leading-tight">
-        가입부터 첫 지원 등록까지 1분.
+        쉽고 빠르게 시작해보세요
       </h2>
     </div>
 
@@ -914,22 +937,22 @@
       <li class="rounded-2xl border border-zinc-100 bg-white p-6 flex items-start gap-4">
         <span class="flex-shrink-0 w-8 h-8 rounded-full bg-brand text-white flex items-center justify-center font-bold text-sm">1</span>
         <div>
-          <p class="text-[16px] font-bold mb-1">이메일로 가입 (30초)</p>
-          <p class="text-sm text-zinc-500">비밀번호 외엔 묻지 않아요.</p>
+          <p class="text-[16px] font-bold mb-1">이메일로 가입하기</p>
+          <p class="text-sm text-zinc-500">이메일과 비밀번호만 있으면 가입할 수 있어요</p>
         </div>
       </li>
       <li class="rounded-2xl border border-zinc-100 bg-white p-6 flex items-start gap-4">
         <span class="flex-shrink-0 w-8 h-8 rounded-full bg-brand text-white flex items-center justify-center font-bold text-sm">2</span>
         <div>
-          <p class="text-[16px] font-bold mb-1">3단계 온보딩 (15초)</p>
-          <p class="text-sm text-zinc-500">기능 한 번만 훑고 바로 시작. 두 번째 방문부턴 안 떠요.</p>
+          <p class="text-[16px] font-bold mb-1">기능 둘러보기</p>
+          <p class="text-sm text-zinc-500">간단한 안내를 따라 주요 기능을 한 번에 살펴보세요</p>
         </div>
       </li>
       <li class="rounded-2xl border border-zinc-100 bg-white p-6 flex items-start gap-4">
         <span class="flex-shrink-0 w-8 h-8 rounded-full bg-brand text-white flex items-center justify-center font-bold text-sm">3</span>
         <div>
-          <p class="text-[16px] font-bold mb-1">첫 지원 등록 (15초)</p>
-          <p class="text-sm text-zinc-500">회사·직무·상태만 적으면 끝. 나머진 면접 진행하면서 채워가면 됩니다.</p>
+          <p class="text-[16px] font-bold mb-1">첫 지원 등록하기</p>
+          <p class="text-sm text-zinc-500">회사·직무·상태만 적으면 끝, 나머지는 진행하면서 천천히 채워가도 돼요</p>
         </div>
       </li>
     </ol>
@@ -950,7 +973,7 @@
             <span class="text-zinc-400 group-open:rotate-180 transition-transform">▾</span>
           </summary>
           <p class="mt-3 text-sm text-zinc-600 leading-relaxed">
-            2026년 5월 기준, 커리업은 베타 서비스로 출시되어 모든 기능을 무료로 제공하고 있습니다. 결제 정보도, 광고도 없어요.
+            2026년 5월 기준, 커리업은 베타 서비스로 출시되어 모든 기능을 무료로 제공하고 있습니다.
           </p>
         </details>
         <details class="group rounded-2xl border border-zinc-100 bg-white p-5 [&_summary::-webkit-details-marker]:hidden">
@@ -959,7 +982,7 @@
             <span class="text-zinc-400 group-open:rotate-180 transition-transform">▾</span>
           </summary>
           <p class="mt-3 text-sm text-zinc-600 leading-relaxed">
-            모든 데이터는 본인 계정으로만 접근 가능합니다 (Row Level Security). 다른 유저는 물론 운영자도 권한 없이 들여다볼 수 없도록 분리되어 있어요.
+            모든 데이터는 본인 계정으로 접근 가능하고, 다른 유저 및 운영자 포함 들여다볼 수 없도록 분리되어 있어요.
           </p>
         </details>
         <details class="group rounded-2xl border border-zinc-100 bg-white p-5 [&_summary::-webkit-details-marker]:hidden">
@@ -988,30 +1011,39 @@
         </details>
         <details class="group rounded-2xl border border-zinc-100 bg-white p-5 [&_summary::-webkit-details-marker]:hidden">
           <summary class="flex items-center justify-between cursor-pointer text-sm font-semibold">
-            AI 피드백은 언제 쓸 수 있나요?
+            AI 피드백은 언제 출시되나요?
             <span class="text-zinc-400 group-open:rotate-180 transition-transform">▾</span>
           </summary>
           <p class="mt-3 text-sm text-zinc-600 leading-relaxed">
-            현재 개발 중이며, 곧 베타 유저에게 우선 공개할 예정입니다. 가입해두시면 출시 시 가장 먼저 안내드려요.
+            현재 API 및 토큰 관련 개발 중이며, 올해 이내로 공개 예정입니다. 가입해두시면 출시 시 가장 먼저 안내드려요.
           </p>
         </details>
       </div>
     </div>
   </section>
 
-  <!-- 마지막 CTA -->
-  <section class="grid-bg">
-    <div class="mx-auto max-w-3xl px-5 sm:px-8 py-20 sm:py-28 text-center">
-      <h2 class="text-[28px] sm:text-[36px] font-bold tracking-tight leading-tight">
-        취준, 더 이상 외롭지 않게.
+  <!-- 마지막 CTA — 히어로와 디자인 통일 -->
+  <section class="relative overflow-hidden hero-glow">
+    <!-- 떠있는 아이콘 데코 (히어로와 동일) -->
+    <div class="float-1 pointer-events-none absolute top-12 right-[8%] hidden md:block opacity-[0.10]">
+      <img src="/icon-192.png" width="170" height="170" alt="" />
+    </div>
+    <div class="float-2 pointer-events-none absolute bottom-8 left-[8%] hidden md:block opacity-[0.07]">
+      <img src="/icon-192.png" width="120" height="120" alt="" />
+    </div>
+
+    <div class="relative mx-auto max-w-3xl px-5 sm:px-8 py-20 sm:py-28 text-center">
+      <h2 class="text-[28px] sm:text-[40px] font-bold tracking-tight leading-[1.15] text-zinc-900">
+        취준,<br/>
+        <span class="bg-gradient-to-r from-brand to-indigo-500 bg-clip-text text-transparent">효율적으로 준비하세요.</span>
       </h2>
-      <p class="mt-4 text-base sm:text-lg text-zinc-500">
+      <p class="mt-5 text-base sm:text-lg text-zinc-500">
         오늘 가입하고 첫 지원부터 기록해보세요.
       </p>
       <a href="https://job-kappa-coral.vercel.app/login"
-         class="mt-9 inline-flex items-center justify-center gap-2 rounded-xl bg-brand hover:bg-blue-600 active:bg-blue-700 transition-colors px-8 py-4 text-sm font-semibold text-white shadow-[0_8px_24px_rgba(49,130,246,0.3)]">
+         class="mt-9 inline-flex items-center justify-center gap-1.5 rounded-xl bg-zinc-900 hover:bg-zinc-700 transition-colors px-8 py-4 text-sm font-semibold text-white shadow-[0_8px_24px_rgba(0,0,0,0.12)]">
         활용해보기
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
     </div>
   </section>
