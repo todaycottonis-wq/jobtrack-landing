@@ -270,7 +270,6 @@
           <div class="hidden md:block border-r border-zinc-100 p-3 space-y-1 bg-zinc-50/40">
             <div class="text-xs font-bold mb-3 px-2">Career up</div>
             <div class="rounded-lg px-2.5 py-1.5 text-xs text-zinc-500">대시보드</div>
-            <div class="rounded-lg px-2.5 py-1.5 text-xs text-zinc-500">캘린더</div>
             <div class="rounded-lg bg-zinc-100 px-2.5 py-1.5 text-xs font-semibold">지원현황</div>
             <div class="rounded-lg px-2.5 py-1.5 text-xs text-zinc-500">문서함</div>
             <div class="rounded-lg px-2.5 py-1.5 text-xs text-zinc-500">AI 피드백</div>
@@ -335,13 +334,13 @@
   <!-- WHY -->
   <section id="why" class="mx-auto max-w-5xl px-5 sm:px-8 py-16 sm:py-24">
     <div class="text-center mb-12">
-      <p class="text-xs font-semibold text-brand mb-2 tracking-widest">취준생이 가장 답답해하는 3가지</p>
+      <p class="text-xs font-semibold text-brand mb-2 tracking-widest">취준생이 가장 답답해하는 2가지</p>
       <h2 class="text-[26px] sm:text-[32px] font-bold tracking-tight leading-tight">
         커리업은<br/>이렇게 풀어요.
       </h2>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
       <article class="rounded-2xl border border-zinc-100 bg-white p-7">
         <div class="w-11 h-11 rounded-xl bg-brand/10 flex items-center justify-center mb-5 text-brand">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
@@ -350,17 +349,6 @@
         <p class="text-[16px] font-bold mb-3 leading-snug">"어디까지 진행됐는지 헷갈려요"</p>
         <p class="text-sm text-zinc-600 leading-relaxed">
           회사·직무·진행 단계를 한눈에. <strong class="text-zinc-900">7단계 진행 상태</strong>로 위시리스트부터 합격까지 자동 정리.
-        </p>
-      </article>
-
-      <article class="rounded-2xl border border-zinc-100 bg-white p-7">
-        <div class="w-11 h-11 rounded-xl bg-brand/10 flex items-center justify-center mb-5 text-brand">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="9 16 11 18 15 14"/></svg>
-        </div>
-        <p class="text-xs font-medium text-zinc-400 mb-1.5">😩 이런 적 있죠</p>
-        <p class="text-[16px] font-bold mb-3 leading-snug">"중요한 일정을 자꾸 놓쳐요"</p>
-        <p class="text-sm text-zinc-600 leading-relaxed">
-          면접·마감일을 <strong class="text-zinc-900">캘린더 한 화면</strong>에서 색상으로 구분. 다음 주 일정을 5초 안에 파악.
         </p>
       </article>
 
@@ -400,7 +388,6 @@
           <nav class="flex gap-7 sm:gap-9 whitespace-nowrap w-fit mx-auto">
             <a href="#feat-dashboard"    class="feat-tab is-active" data-target="feat-dashboard">대시보드</a>
             <a href="#feat-applications" class="feat-tab" data-target="feat-applications">지원 현황</a>
-            <a href="#feat-calendar"     class="feat-tab" data-target="feat-calendar">캘린더</a>
             <a href="#feat-documents"    class="feat-tab" data-target="feat-documents">문서함</a>
             <a href="#feat-essays"       class="feat-tab" data-target="feat-essays">자소서</a>
             <a href="#feat-ai"           class="feat-tab" data-target="feat-ai">AI 피드백</a>
@@ -610,86 +597,7 @@
       </div>
     </article>
 
-    <!-- ============ Section 3: 캘린더 ============ -->
-    <article id="feat-calendar" class="scroll-mt-28">
-      <div class="mx-auto max-w-6xl px-5 sm:px-8 py-16 sm:py-24">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          <div class="reveal">
-            <p class="text-xs font-bold text-brand tracking-widest mb-3">CALENDAR</p>
-            <h3 class="text-[28px] sm:text-[40px] font-bold tracking-tight leading-[1.15] mb-5">
-              주요 일정을 한눈에<br/>
-              정리해보세요
-            </h3>
-            <p class="text-base sm:text-lg text-zinc-600 leading-relaxed mb-7">
-              일정을 색깔별로 구분해보세요
-            </p>
-            <ul class="space-y-2.5 text-sm text-zinc-700">
-              <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>한국 공휴일 자동 표시</span></li>
-              <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>일정 유형 직접 만들기</span></li>
-              <li class="flex items-start gap-2"><span class="text-brand mt-0.5">✓</span><span>미팅 URL·장소 함께 저장</span></li>
-            </ul>
-          </div>
-          <div class="reveal">
-            <div class="rounded-2xl border border-zinc-200 bg-white shadow-[0_24px_64px_rgba(0,0,0,0.08)] p-4 sm:p-5">
-              <div class="flex items-center justify-between mb-3">
-                <p class="text-sm font-bold">2026년 5월</p>
-                <div class="flex gap-2 text-[10px] text-zinc-400">
-                  <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span>면접</span>
-                  <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>마감</span>
-                  <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>일정</span>
-                </div>
-              </div>
-              <div class="grid grid-cols-7 gap-1 text-[10px] text-zinc-400 mb-2 text-center">
-                <span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span>
-              </div>
-              <div class="grid grid-cols-7 gap-1 text-center">
-                <div class="aspect-square text-[10px] text-zinc-300 flex items-center justify-center">28</div>
-                <div class="aspect-square text-[10px] text-zinc-300 flex items-center justify-center">29</div>
-                <div class="aspect-square text-[10px] text-zinc-300 flex items-center justify-center">30</div>
-                <div class="aspect-square text-[10px] flex items-center justify-center">1</div>
-                <div class="aspect-square text-[10px] flex items-center justify-center">2</div>
-                <div class="aspect-square text-[10px] flex items-center justify-center relative">3<span class="absolute bottom-0.5 w-1 h-1 rounded-full bg-purple-500"></span></div>
-                <div class="aspect-square text-[10px] flex items-center justify-center text-blue-500">4</div>
-                <div class="aspect-square text-[10px] flex items-center justify-center text-red-500 font-bold">5</div>
-                <div class="aspect-square text-[10px] flex items-center justify-center">6</div>
-                <div class="aspect-square text-[10px] flex items-center justify-center bg-brand text-white rounded-full font-bold">7</div>
-                <div class="aspect-square text-[10px] flex items-center justify-center relative">8<span class="absolute bottom-0.5 w-1 h-1 rounded-full bg-red-500"></span></div>
-                <div class="aspect-square text-[10px] flex items-center justify-center">9</div>
-                <div class="aspect-square text-[10px] flex items-center justify-center">10</div>
-                <div class="aspect-square text-[10px] flex items-center justify-center text-blue-500">11</div>
-                <div class="aspect-square text-[10px] flex items-center justify-center text-red-500">12</div>
-                <div class="aspect-square text-[10px] flex items-center justify-center relative">13<span class="absolute bottom-0.5 w-1 h-1 rounded-full bg-purple-500"></span></div>
-                <div class="aspect-square text-[10px] flex items-center justify-center relative">14<span class="absolute bottom-0.5 w-1 h-1 rounded-full bg-amber-500"></span></div>
-                <div class="aspect-square text-[10px] flex items-center justify-center">15</div>
-                <div class="aspect-square text-[10px] flex items-center justify-center">16</div>
-                <div class="aspect-square text-[10px] flex items-center justify-center">17</div>
-                <div class="aspect-square text-[10px] flex items-center justify-center">18</div>
-                <div class="aspect-square text-[10px] flex items-center justify-center text-blue-500">19</div>
-                <div class="aspect-square text-[10px] flex items-center justify-center text-red-500">20</div>
-                <div class="aspect-square text-[10px] flex items-center justify-center">21</div>
-              </div>
-              <div class="mt-3 pt-3 border-t border-zinc-100">
-                <p class="text-[10px] font-bold mb-2">다가오는 일정</p>
-                <div class="space-y-1.5">
-                  <div class="flex items-center gap-2 text-[11px]">
-                    <span class="w-1 h-4 rounded-full bg-purple-500"></span>
-                    <span class="font-medium">카카오 2차 면접</span>
-                    <span class="ml-auto text-zinc-400">5/13</span>
-                  </div>
-                  <div class="flex items-center gap-2 text-[11px]">
-                    <span class="w-1 h-4 rounded-full bg-red-500"></span>
-                    <span class="font-medium">네이버 자소서 마감</span>
-                    <span class="ml-auto text-zinc-400">5/8</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <!-- ============ Section 4: 문서함 ============ -->
+    <!-- ============ Section 3: 문서함 ============ -->
     <article id="feat-documents" class="scroll-mt-28 bg-white border-y border-zinc-100">
       <div class="mx-auto max-w-6xl px-5 sm:px-8 py-16 sm:py-24">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
