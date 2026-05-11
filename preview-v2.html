@@ -108,6 +108,46 @@
   <script defer src="/_vercel/insights/script.js"></script>
   <!-- Vercel Speed Insights -->
   <script defer src="/_vercel/speed-insights/script.js"></script>
+
+  <!-- 커리업 관리자 대시보드 트래킹 -->
+  <script>
+  (function(){
+    var API = 'https://job-kappa-coral.vercel.app/api/track-landing';
+    function getVid(){
+      try {
+        var v = localStorage.getItem('jt_vid');
+        if (!v){
+          v = (crypto && crypto.randomUUID && crypto.randomUUID())
+            || (Date.now() + '-' + Math.random().toString(36).slice(2));
+          localStorage.setItem('jt_vid', v);
+        }
+        return v;
+      } catch(e){ return null; }
+    }
+    function track(event, props){
+      try {
+        var p = Object.assign({ vid: getVid(), path: location.pathname }, props || {});
+        fetch(API, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ event: event, props: p }),
+          keepalive: true, mode: 'cors', credentials: 'omit',
+        }).catch(function(){});
+      } catch(e){}
+    }
+    track('landing_view');
+    document.addEventListener('click', function(e){
+      var el = e.target.closest && e.target.closest('a[href], button');
+      if (!el) return;
+      var dataTrack = el.getAttribute('data-track');
+      var href = el.getAttribute('href') || '';
+      var isCTA = !!dataTrack || /\/(login|signup)/.test(href) || /job-kappa-coral/.test(href);
+      if (!isCTA) return;
+      var label = dataTrack || (el.textContent || '').trim().slice(0, 40);
+      track('landing_cta_click', { label: label, href: href || null });
+    }, { passive: true });
+  })();
+  </script>
 </head>
 <body class="bg-white text-zinc-900">
 
